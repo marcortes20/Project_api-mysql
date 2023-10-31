@@ -1,0 +1,301 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+h1, h2, h3{
+  font-family: 'Nunito Sans', sans-serif;
+}
+p, b{
+  font-family: 'Zilla Slab', serif;
+}
+
+.main {
+  margin-top: 60px;
+  padding-left: 0px;
+  padding-right: 0px;
+  flex: 1;
+}
+
+.content_one {
+  background-color: white;
+  display: flex;
+  padding: 20px 100px;
+  gap: 10%;
+}
+
+.content_one_information {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.content_one_picture {
+  display: flex;
+  justify-content: center;
+}
+
+
+.picture_one {
+  width: 450px;
+  border-radius: 5px;
+}
+
+
+
+.content-two {
+  padding: 20px;
+  background-color: #e4e3d2  ;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.content_two_information {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+
+
+#content-product {
+  background-color: white;
+  border-radius: 10px;
+  width: 500px;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+#content-discount {
+  margin-top: 15px;
+  border-radius: 50%;
+  background-color: black;
+  height: 65px;
+  width: 65px;
+  color: white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+
+}
+
+#picture-content_two {
+
+  transition: opacity 0.5s;
+
+  width: 400px;
+  height: 400px;
+}
+
+#content-information-picture-one {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+#text-1 {
+  text-align: left;
+}
+
+#content-more {
+  background-color: #050505;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.clothes-buttons button {
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  transition: background-color 0.5s ease;
+  
+}
+
+.clothes-buttons button:hover{
+  background-color: #050505;
+}
+
+.content-three{
+  padding-top: 50px;
+}
+
+.container {
+  display: flex;
+  margin: auto;
+  padding: 20px;
+  width: 60%;
+  height: 600px;
+}
+
+
+.container img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover; /*se ajusta al tamaño del contenedor*/
+  opacity: .8;
+  transition: .7s ease;
+}
+
+.container img:hover {
+  cursor: crosshair;
+  width: 50%;
+  opacity: 1;
+
+}
+
+.discount_field{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+
+
+#title_content_three {
+  text-align: center;
+}
+
+
+
+
+.content-four {
+  background-color:#FCE1D3;
+  display: flex;
+  flex-direction: row;
+  text-align: start;
+
+}
+
+.content_four_picture {
+  margin-left: 20px;
+}
+
+#picture_content_four {
+  width: 350px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 150px;
+}
+
+.services_content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  margin-left: 100px;
+}
+
+
+
+
+#ico1 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+
+#ico2 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+
+#ico3 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+
+#ico4 {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+}
+
+.service_1,
+.service_2,
+.service_3,
+.service_4 {
+
+  display: flex;
+  gap: 40px;
+}
+
+
+@media (max-width: 600px)
+{
+  .content_one{
+    margin-top: 50px;
+    flex-direction: column;
+  }
+
+  #picture_content_four{
+    display: none;
+  }
+
+  .content-four{
+    width: 100%;
+    padding: 50px;
+  }
+
+  main{
+    width: 100%;
+  }
+
+
+  .container {
+    display: flex;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    height: 400px;
+  }
+  
+  
+  .container img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover; /*se ajusta al tamaño del contenedor*/
+    opacity: .8;
+    transition: .7s ease;
+  }
+
+
+
+  
+
+}
