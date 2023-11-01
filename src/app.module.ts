@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Company } from './companies/entities/company.entity';
 import { ProductsModule } from './products/products.module';
 import { ServicesModule } from './services/services.module';
+import { CategoriesCrudModule } from './categories_crud/categories_crud.module';
 
 
 @Module({
@@ -28,6 +29,8 @@ import { ServicesModule } from './services/services.module';
     ProductsModule,
 
     ServicesModule,
+
+    CategoriesCrudModule,
     
     
 
