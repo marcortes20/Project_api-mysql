@@ -18,5 +18,5 @@ export class CreateProductDto {
   size:string
 
   @IsNumber()
-  compani_id: number;
+  company_id: number;
 }
