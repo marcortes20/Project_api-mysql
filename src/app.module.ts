@@ -3,10 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CompaniesModule } from './companies/companies.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Company } from './companies/entities/company.entity';
 import { ProductsModule } from './products/products.module';
 import { ServicesModule } from './services/services.module';
-import { CategoriesCrudModule } from './categories_crud/categories_crud.module';
+import { CategoriesModule } from './categories/categories.module';
+
 
 
 @Module({
@@ -30,7 +30,7 @@ import { CategoriesCrudModule } from './categories_crud/categories_crud.module';
 
     ServicesModule,
 
-    CategoriesCrudModule,
+    CategoriesModule,
     
     
 
