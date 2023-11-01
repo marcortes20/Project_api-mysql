@@ -21,7 +21,7 @@ export class ProductsService {
 
 
   async create(createProductDto: CreateProductDto) {
-    const company = await this.company_Repo.findOneBy({ id: createProductDto.compani_id });
+    const company = await this.company_Repo.findOneBy({ id: createProductDto.company_id });
 
     if (!company) {
       throw new BadRequestException('company not found');
@@ -37,7 +37,7 @@ export class ProductsService {
   }
 
   async findAll() {
-    return this.productRepository.find();
+    return await this.productRepository.find();
   }
 
   async findOne(id: number) {
@@ -55,9 +55,9 @@ export class ProductsService {
 
     let company;
 
-    if (updateProductDto.compani_id) {
+    if (updateProductDto.company_id) {
 
-      company = await this.company_Repo.findOneBy({ id: updateProductDto.compani_id });
+      company = await this.company_Repo.findOneBy({ id: updateProductDto.company_id });
 
     }
 

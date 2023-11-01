@@ -27,6 +27,6 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
 
   @IsNumber()
   @IsOptional()
-  compani_id: number;
+  company_id: number;
 
 }
