@@ -1,35 +1,81 @@
-import { Injectable } from '@nestjs/common';
+
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
 import { Repository } from 'typeorm';
+import { Company } from 'src/companies/entities/company.entity';
 
 @Injectable()
 export class ProductsService {
 
   constructor(
-@InjectRepository(Product)
-private productRepository : Repository<Product>
+    @InjectRepository(Product)
+    private productRepository: Repository<Product>,
 
-  ){}
-  create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+    @InjectRepository(Company)
+    private company_Repo: Repository<Company>,
+
+  ) { }
+
+
+  async create(createProductDto: CreateProductDto) {
+    const company = await this.company_Repo.findOneBy({ id: createProductDto.compani_id });
+
+    if (!company) {
+      throw new BadRequestException('company not found');
+    }
+
+    const product = this.productRepository.create({
+      ...createProductDto,
+      company
+
+    });
+
+    return await this.productRepository.save(product);
   }
 
-  findAll() {
-    return `This action returns all products`;
+  async findAll() {
+    return this.productRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  async findOne(id: number) {
+    return await this.productRepository.findOneBy({ id });
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+  async update(id: number, updateProductDto: UpdateProductDto) {
+
+    const product = await this.productRepository.findOneBy({ id });
+
+    if (!product) {
+
+      throw new BadRequestException('Product not found');
+    }
+
+    let company;
+
+    if (updateProductDto.compani_id) {
+
+      company = await this.company_Repo.findOneBy({ id: updateProductDto.compani_id });
+
+    }
+
+    if (!company) {
+
+      throw new BadRequestException('Company not found');
+    }
+
+    return await this.productRepository.save({
+      ...product,
+      ...updateProductDto,
+      company
+
+    })
+
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  async remove(id: number) {
+    return this.productRepository.delete({ id });
   }
 }

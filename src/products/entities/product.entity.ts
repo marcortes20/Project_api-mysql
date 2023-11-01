@@ -22,7 +22,12 @@ export class Product {
   @Column()
   size:string
 
-  @ManyToOne(() => Company, company => company.product)
+
+
+  @ManyToOne(() => Company, company => company.id, {
+    // cascade: true,
+    eager: true, // para que traiga las raza al hacer un findOne
+  })
   company: Company;
 
 }
