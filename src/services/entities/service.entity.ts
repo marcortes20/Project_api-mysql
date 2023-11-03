@@ -16,7 +16,7 @@ export class Service {
   @Column()
   icon: string;
 
-  @ManyToOne(() => Company, company => company.id, {
+  @ManyToOne(() => Company, company => company.services, {
     // cascade: true,
     eager: true, // para que traiga las raza al hacer un findOne
   })

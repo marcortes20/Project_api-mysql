@@ -15,6 +15,18 @@ export class CompaniesService {
   ) { }
 
 
+
+  async getCompanyWithChildren(id: number) {
+    return this.companyRepository.createQueryBuilder('company')
+      .where('company.id = :companyId', { companyId: id }) // Especifica el alias de la tabla 'company'
+      .leftJoinAndSelect('company.products', 'products')
+      .leftJoinAndSelect('company.categories', 'categories')
+      .leftJoinAndSelect('company.services', 'services')
+      .leftJoinAndSelect('company.menuOptions', 'menuOptions')
+      .getOne();
+  }
+  
+  
   async create(createCompanyDto: CreateCompanyDto) {
     const company = this.companyRepository.create(createCompanyDto);
     return  await this.companyRepository.save(company);
