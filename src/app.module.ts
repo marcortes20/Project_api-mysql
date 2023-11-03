@@ -12,8 +12,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { MenuOptionsModule } from './menu-options/menu-options.module';
 
 
-
-
 @Module({
   imports: [
 
@@ -27,7 +25,7 @@ import { MenuOptionsModule } from './menu-options/menu-options.module';
 
     MenuOptionsModule,
 
-
+    //npm install --save @nestjs/serve-static
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'src/views'),   // <-- path to the static files
     }),

@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(company);
       load_header(company);
       load_main(company);
-
-
     })
 
   function load_header(header_information) {

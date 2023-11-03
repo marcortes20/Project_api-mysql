@@ -19,7 +19,7 @@ export class CompaniesController {
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.companiesService.getCompanyWithChildren(id);
+    return this.companiesService.findOne(id);
   }
 
   @Patch(':id')
