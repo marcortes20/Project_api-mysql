@@ -14,15 +14,20 @@ export class Product {
   image: string;
 
   @Column()
-  discount: number;
+  discount: string;
 
   @Column()
-  price: number;
+  price: string;
 
   @Column()
   size:string
 
-  @ManyToOne(() => Company, company => company.product)
+
+
+  @ManyToOne(() => Company, company => company.products, {
+    // cascade: true,
+    eager: true, // para que traiga las raza al hacer un findOne
+  })
   company: Company;
 
 }
