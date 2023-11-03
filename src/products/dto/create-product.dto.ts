@@ -8,11 +8,11 @@ export class CreateProductDto {
   @IsString()
   image: string;
 
-  @IsNumber()
-  discount: number;
+  @IsString()
+  discount: string;
 
-  @IsNumber()
-  price: number;
+  @IsString()
+  price: string;
 
   @IsString()
   size:string

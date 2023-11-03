@@ -13,13 +13,13 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   @IsOptional()
   image: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  discount: number;
+  discount: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  price: number;
+  price: string;
 
   @IsString()
   @IsOptional()

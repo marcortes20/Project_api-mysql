@@ -104,19 +104,19 @@
   },
   "section_4": {
     "title": "¿WHAT ARE OUR SERVICES?",
-    "img": "./Assets/pic four.jpg",
+    "img": "../Assets/pic four.jpg",
     "services": [
       {
         "id": 1,
         "service_title": "Buy Online",
         "text": "Where customers can search, select and purchase apparel and accessories from the convenience of their electronic devices.",
-        "ico": "Assets/cardbuy.jpg"
+        "ico": "../Assets/cardbuy.jpg"
       },
       {
         "id": 2,
         "service_title": "Send by Correos CR",
         "text": "Home deliveries are made through our express service where your orders will arrive at the door of your house.",
-        "ico": "Assets/truck.jpg"
+        "ico": "../Assets/truck.jpg"
       },
       {
         "id": 3,
@@ -136,15 +136,15 @@
     "footer_icons": [
       {
         "id": 1,
-        "url": "Assets/instagram.svg"
+        "url": "/Assets/instagram.svg"
       },
       {
         "id": 2,
-        "url": "Assets/brand-facebook-filled.svg"
+        "url": "/Assets/brand-facebook-filled.svg"
       },
       {
         "id": 3,
-        "url": "Assets/brand-twitter-filled.svg"
+        "url": "/Assets/brand-twitter-filled.svg"
       }
     ],
     "footer_sections": [
