@@ -37,7 +37,7 @@ export class CompaniesService {
   }
 
   async findOne(id: number) {
-    return await this.companyRepository.findOneBy({id});
+    return await this.companyRepository.findOne({where: {id}, relations:['categories','services', 'products', 'menuOptions']});
   }
 
   async update(id: number, updateCompanyDto: UpdateCompanyDto) {
