@@ -208,7 +208,7 @@ p, b{
   margin-left: 150px;
 }
 
-.services_content {
+#services_container {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -219,34 +219,15 @@ p, b{
 
 
 
-#ico1 {
+
+.service_icons {
   width: 70px;
   height: 70px;
   border-radius: 50px;
 }
 
-#ico2 {
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-}
 
-#ico3 {
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-}
-
-#ico4 {
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-}
-
-.service_1,
-.service_2,
-.service_3,
-.service_4 {
+.service {
 
   display: flex;
   gap: 40px;
