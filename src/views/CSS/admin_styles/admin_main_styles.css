@@ -28,7 +28,7 @@ b {
   gap: 10%;
 }
 
-.edit_delete_container button {
+.edit_delete_container_cat button {
   height: 36px;
   border-radius: 3px;
   background-color: white;
@@ -36,7 +36,15 @@ b {
   cursor: pointer;
 }
 
-.edit_delete_container{
+.edit_delete_container_serv button {
+  height: 36px;
+  border-radius: 3px;
+  background-color: #FCE1D3;
+  border: none;
+  cursor: pointer;
+}
+
+.edit_delete_container_serv, .edit_delete_container_cat{
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -266,6 +274,10 @@ i{
 
 
 .categories{
+  transition: opacity 0.5s ease;
+}
+
+.service{
   transition: opacity 0.5s ease;
 }
 

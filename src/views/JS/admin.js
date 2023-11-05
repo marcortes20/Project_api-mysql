@@ -62,13 +62,23 @@ document.addEventListener('DOMContentLoaded', function () {
   // }
 
 
-  function delete_category(id_category){
+  function delete_category(id_category) {
 
 
-    fetch(`http://localhost:3000/Project/api/categories/${id_category}`,{
-  method: 'DELETE',
-});
+    fetch(`http://localhost:3000/Project/api/categories/${id_category}`, {
+      method: 'DELETE',
+    });
 
+
+
+  }
+
+  function delete_service(id_category) {
+
+
+    fetch(`http://localhost:3000/Project/api/services/${id_category}`, {
+      method: 'DELETE',
+    });
 
 
   }
@@ -147,12 +157,10 @@ document.addEventListener('DOMContentLoaded', function () {
       let btn_delete = document.createElement("button");
       let btn_edit = document.createElement("button");
 
-      btn_delete.classList.add("category_delete")
-      btn_edit.classList.add("category_edit")
+      btn_delete.classList.add("category_delete");
+      btn_edit.classList.add("category_edit");
 
 
-      //give class to the buttons container to make styles
-      edit_delete_container.classList.add("edit_delete_container");
 
 
       //create 2 i tags to add icons into buttons
@@ -162,6 +170,8 @@ document.addEventListener('DOMContentLoaded', function () {
       icon_edit.className = "fa-solid fa-pen-to-square";
 
 
+      //give class to the buttons container to make styles
+      edit_delete_container.classList.add("edit_delete_container_cat");
 
       //add the icons
       btn_edit.appendChild(icon_edit);
@@ -182,18 +192,18 @@ document.addEventListener('DOMContentLoaded', function () {
       catContainer.appendChild(new_category);
 
       btn_delete.addEventListener('click', () => {
-  
+
 
         new_category.style.opacity = 1;
-        new_category.style.opacity = 0; 
+        new_category.style.opacity = 0;
         // Después de un breve retraso, cambia la imagen y restaura la opacidad
         setTimeout(() => {
-          
+
           catContainer.removeChild(new_category);
           catContainer.removeChild(edit_delete_container);
           delete_category(option.id);
 
-        }, 1000);
+        }, 500);
 
 
       });
@@ -213,6 +223,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     main_information.services.forEach(option => {
+      //create the father or the edit delete buttos services
+
+
+      //create the father or the edit delete buttos categoies
+      let edit_delete_container = document.createElement("div");
+      //give class to the buttons container to make styles
+      edit_delete_container.classList.add("edit_delete_container_serv");
+
+      //create delete/edit buttons
+      let btn_delete = document.createElement("button");
+      let btn_edit = document.createElement("button");
+
+      btn_delete.classList.add("category_delete");
+      btn_edit.classList.add("category_edit");
+
+      //create 2 i tags to add icons into buttons
+      const icon_delete = document.createElement("i");
+      icon_delete.className = "fa-solid fa-trash";
+      const icon_edit = document.createElement("i");
+      icon_edit.className = "fa-solid fa-pen-to-square";
+
+      //add the icons
+      btn_edit.appendChild(icon_edit);
+      btn_delete.appendChild(icon_delete);
+
+      //insert buttons into div father
+      edit_delete_container.appendChild(btn_delete);
+      edit_delete_container.appendChild(btn_edit);
+
+
+      
 
       //create a new div to the service
       let new_service = document.createElement('div');
@@ -227,11 +268,6 @@ document.addEventListener('DOMContentLoaded', function () {
       img_service.src = option.icon;
 
 
-
-
-
-
-
       let service_title = document.createElement('h3')
       let service_description = document.createElement('p');
 
@@ -242,10 +278,28 @@ document.addEventListener('DOMContentLoaded', function () {
       service_content.appendChild(service_title);
       service_content.appendChild(service_description);
 
+      new_service.appendChild(edit_delete_container);
       new_service.appendChild(img_service);
       new_service.appendChild(service_content);
 
       services_container.appendChild(new_service);
+
+      btn_delete.addEventListener('click', () => {
+
+
+        new_service.style.opacity = 1;
+        new_service.style.opacity = 0;
+        // Después de un breve retraso, cambia la imagen y restaura la opacidad
+        setTimeout(() => {
+
+          services_container.removeChild(new_service);
+          
+          delete_service(option.id);
+
+        }, 500);
+
+
+      });
 
     });
 
