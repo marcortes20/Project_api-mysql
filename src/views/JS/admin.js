@@ -6,15 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//   let btn_reload = document.getElementById('reload');
-//   btn_reload.addEventListener("click", function(event) {
-//     // Evita que el enlace redireccione a la URL especificada en 'href'
-//     event.preventDefault();
-//     reload_page();
-// });
-  
+  //   let btn_reload = document.getElementById('reload');
+  //   btn_reload.addEventListener("click", function(event) {
+  //     // Evita que el enlace redireccione a la URL especificada en 'href'
+  //     event.preventDefault();
+  //     reload_page();
+  // });
+
   function reload_page() {
-    
+
     fetch('http://localhost:3000/Project/api/companies/1')
       .then((response) => response.json())
       .then((company) => {
@@ -60,6 +60,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   // }
+
+
+  function delete_category(id_category){
+
+
+    fetch(`http://localhost:3000/Project/api/categories/${id_category}`,{
+  method: 'DELETE',
+});
+
+
+
+  }
+
 
   function load_main(main_information) {
 
@@ -119,18 +132,79 @@ document.addEventListener('DOMContentLoaded', function () {
     //cargando seccion 3
 
     main_information.categories.forEach(option => {
-      
-      let categories_container = document.getElementById('cat_container');
 
+      // search the father of news categories
+      let catContainer = document.getElementById('catContainer');
+
+      //create a new category
       let new_category = document.createElement("img");
 
+
+      //create the father or the edit delete buttos categoies
+      let edit_delete_container = document.createElement("div");
+
+      //create delete/edit buttons
+      let btn_delete = document.createElement("button");
+      let btn_edit = document.createElement("button");
+
+      btn_delete.classList.add("category_delete")
+      btn_edit.classList.add("category_edit")
+
+
+      //give class to the buttons container to make styles
+      edit_delete_container.classList.add("edit_delete_container");
+
+
+      //create 2 i tags to add icons into buttons
+      const icon_delete = document.createElement("i");
+      icon_delete.className = "fa-solid fa-trash";
+      const icon_edit = document.createElement("i");
+      icon_edit.className = "fa-solid fa-pen-to-square";
+
+
+
+      //add the icons
+      btn_edit.appendChild(icon_edit);
+      btn_delete.appendChild(icon_delete);
+
+      //insert buttons into div father
+      edit_delete_container.appendChild(btn_delete);
+      edit_delete_container.appendChild(btn_edit);
+
+      // this is the div who contains just image category
       new_category.src = option.img;
 
-      new_category.classList.add("transicion-category");
-      
-      categories_container.appendChild(new_category);
-      
+      //give class to make styles
+      new_category.classList.add("categories");
+
+      //add buttons
+      catContainer.appendChild(edit_delete_container);
+      catContainer.appendChild(new_category);
+
+      btn_delete.addEventListener('click', () => {
+  
+
+        new_category.style.opacity = 1;
+        new_category.style.opacity = 0; 
+        // Después de un breve retraso, cambia la imagen y restaura la opacidad
+        setTimeout(() => {
+          
+          catContainer.removeChild(new_category);
+          catContainer.removeChild(edit_delete_container);
+          delete_category(option.id);
+
+        }, 1000);
+
+
+      });
+
     });
+
+
+
+
+
+
 
     //cargando seccion 4
 
@@ -153,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function () {
       img_service.src = option.icon;
 
 
-      
 
 
-      
+
+
 
       let service_title = document.createElement('h3')
       let service_description = document.createElement('p');

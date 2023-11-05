@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../CSS/main_styles.css">
-  <link rel="stylesheet" href="../CSS/header_styles.css">
-  <link rel="stylesheet" href="../CSS/footer_styles.css">
+  <link rel="stylesheet" href="../CSS/admin_styles/admin_main_styles.css">
+  <link rel="stylesheet" href="../CSS/admin_styles/admin_header_styles.css">
+  <link rel="stylesheet" href="../CSS/admin_styles/admin_footer_styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap" rel="stylesheet">
-
+  <script src="https://kit.fontawesome.com/910f16346a.js" crossorigin="anonymous"></script>
   <title>My landing page</title>
 </head>
 
@@ -48,7 +48,7 @@
       </div>
 
       <div class="nav-options">
-        
+
         <ul class="first-menu-options">
           <a href="../index.html">Base page</a>
           <li><a id="menu_option_1" href="#start"></a></li>
@@ -92,6 +92,7 @@
     </section>
 
     <section class="content-two" id="products">
+
       <div class="content_two_information">
 
         <h2 id="title_section_2">NEW COLLECTION</h2>
@@ -110,8 +111,19 @@
             </div>
 
           </div>
-          <img id="picture-content_two" src="" alt="">
 
+          <div id="carousel">
+
+            
+            
+            <img id ="leftButton" src="../Assets/arrow-left.svg" alt="">
+
+            <img id="picture-content_two" src="" alt="">
+            
+            <img id="righttButton" src="../Assets/arrow-right.svg" alt="">
+            
+            
+          </div>
           <div id="content-information-picture-one">
             <div id="text-1">
               <p><b id="description_product"></b><br></p>
@@ -129,7 +141,7 @@
           <button id="button_3" type="button"></button>
           <button id="button_4" type="button"></button>
         </div>
-
+        
       </div>
 
       <!-- Agrega aquí tu contenido principal -->
@@ -140,12 +152,8 @@
 
       <h2 id="title_content_three">CATEGORIES</h2>
 
-      <div class="container">
+      <div id="catContainer" class="container">
 
-        <img id="content_three_img_1" src="" text="ELEGANT">
-        <img id="content_three_img_2" src="" text="SUMMER">
-        <img id="content_three_img_3" src="" text="DENIM">
-        <img id="content_three_img_4" src="" text="SPORT">
 
       </div>
 
@@ -155,67 +163,17 @@
     <section class="content-four" id="services">
 
 
-      <div class="services_content">
+      <div id="services_container">
 
         <h1 id="title_content_four">¿What are our services?</h1>
 
-        <div class="service_1">
-
-          <div class="img_service">
-            <img id="ico1" img src="" alt="">
-          </div>
-
-          <div id="service_content_1">
-            <h3></h3>
-            <p></p>
-          </div>
-
-        </div>
-
-        <div class="service_2">
-
-          <div class="img_service">
-            <img id="ico2" src="" alt="">
-          </div>
-
-          <div id="service_content_2">
-            <h3></h3>
-            <p></p>
-          </div>
-
-        </div>
-
-        <div class="service_3">
-
-          <div class="img_service">
-            <img id="ico3" src="" alt="">
-          </div>
-
-          <div id="service_content_3">
-            <h3></h3>
-            <p></p>
-          </div>
-
-        </div>
-
-        <div class="service_4">
-
-          <div class="img_service">
-            <img id="ico4" src="" alt="">
-          </div>
-
-          <div id="service_content_4">
-
-            <h3></h3>
-            <p></p>
-
-          </div>
-
-
-
-        </div>
+      </div>
 
       </div>
+
+
+
+
       <div class="content_four_picture">
         <img id="picture_content_four" img src="../Assets/pic four.jpg" alt="">
       </div>
@@ -263,7 +221,7 @@
     </div>
 
   </footer>
-  <script src="../JS/main.js"></script>
+  <script src="../JS/admin.js"></script>
 </body>
 
 </html>
