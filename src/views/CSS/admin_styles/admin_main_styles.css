@@ -2,10 +2,15 @@ body {
   display: flex;
   flex-direction: column;
 }
-h1, h2, h3{
+
+h1,
+h2,
+h3 {
   font-family: 'Nunito Sans', sans-serif;
 }
-p, b{
+
+p,
+b {
   font-family: 'Zilla Slab', serif;
 }
 
@@ -22,6 +27,34 @@ p, b{
   padding: 20px 100px;
   gap: 10%;
 }
+
+.edit_delete_container button {
+  height: 36px;
+  border-radius: 3px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.edit_delete_container{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.category_delete i{
+  color: red; /* Color del icono */
+}
+
+.category_edit i{
+  color: blue;
+}
+
+i{
+  font-size: 21px; /* Tamaño del icono */
+}
+
+
 
 .content_one_information {
   display: flex;
@@ -46,7 +79,7 @@ p, b{
 
 .content-two {
   padding: 20px;
-  background-color: #e4e3d2  ;
+  background-color: #e4e3d2;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -59,6 +92,19 @@ p, b{
 }
 
 
+#carousel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+#leftButton,
+#righttButton {
+  cursor: pointer;
+  transform: translateY(-50%);
+  user-select: none;
+}
 
 
 #content-product {
@@ -134,14 +180,14 @@ p, b{
   width: 50px;
   height: 50px;
   transition: background-color 0.5s ease;
-  
+
 }
 
-.clothes-buttons button:hover{
+.clothes-buttons button:hover {
   background-color: #050505;
 }
 
-.content-three{
+.content-three {
   padding-top: 50px;
 }
 
@@ -151,6 +197,7 @@ p, b{
   padding: 20px;
   width: 60%;
   height: 600px;
+
 }
 
 
@@ -160,19 +207,20 @@ p, b{
   align-items: center;
   width: 0px;
   flex-grow: 1;
-  object-fit: cover; /*se ajusta al tamaño del contenedor*/
+  object-fit: cover;
+  /*se ajusta al tamaño del contenedor*/
   opacity: .8;
   transition: .7s ease;
+  margin-right: 25px;
 }
 
 .container img:hover {
   cursor: crosshair;
-  width: 50%;
   opacity: 1;
 
 }
 
-.discount_field{
+.discount_field {
   width: 100%;
   display: flex;
   align-items: center;
@@ -190,7 +238,7 @@ p, b{
 
 
 .content-four {
-  background-color:#FCE1D3;
+  background-color: #FCE1D3;
   display: flex;
   flex-direction: row;
   text-align: start;
@@ -231,52 +279,4 @@ p, b{
 
   display: flex;
   gap: 40px;
-}
-
-
-@media (max-width: 600px)
-{
-  .content_one{
-    margin-top: 50px;
-    flex-direction: column;
-  }
-
-  #picture_content_four{
-    display: none;
-  }
-
-  .content-four{
-    width: 100%;
-    padding: 50px;
-  }
-
-  main{
-    width: 100%;
-  }
-
-
-  .container {
-    display: flex;
-    margin: auto;
-    padding: 20px;
-    width: 90%;
-    height: 400px;
-  }
-  
-  
-  .container img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 0px;
-    flex-grow: 1;
-    object-fit: cover; /*se ajusta al tamaño del contenedor*/
-    opacity: .8;
-    transition: .7s ease;
-  }
-
-
-
-  
-
 }
