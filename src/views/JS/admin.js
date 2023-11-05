@@ -61,6 +61,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // }
 
+
+  function delete_category(id_category){
+
+
+    fetch(`http://localhost:3000/Project/api/categories/${id_category}`,{
+  method: 'DELETE',
+});
+
+
+
+  }
+
+
   function load_main(main_information) {
 
     //variables de la seccion 1 del main
@@ -125,22 +138,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
       //create a new category
       let new_category = document.createElement("img");
-      
+
 
       //create the father or the edit delete buttos categoies
       let edit_delete_container = document.createElement("div");
-      
+
       //create delete/edit buttons
       let btn_delete = document.createElement("button");
       let btn_edit = document.createElement("button");
 
       btn_delete.classList.add("category_delete")
       btn_edit.classList.add("category_edit")
-      
+
 
       //give class to the buttons container to make styles
       edit_delete_container.classList.add("edit_delete_container");
-      
+
 
       //create 2 i tags to add icons into buttons
       const icon_delete = document.createElement("i");
@@ -148,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const icon_edit = document.createElement("i");
       icon_edit.className = "fa-solid fa-pen-to-square";
 
-      
+
 
       //add the icons
       btn_edit.appendChild(icon_edit);
@@ -167,6 +180,23 @@ document.addEventListener('DOMContentLoaded', function () {
       //add buttons
       catContainer.appendChild(edit_delete_container);
       catContainer.appendChild(new_category);
+
+      btn_delete.addEventListener('click', () => {
+  
+
+        new_category.style.opacity = 1;
+        new_category.style.opacity = 0; 
+        // Después de un breve retraso, cambia la imagen y restaura la opacidad
+        setTimeout(() => {
+          
+          catContainer.removeChild(new_category);
+          catContainer.removeChild(edit_delete_container);
+          delete_category(option.id);
+
+        }, 1000);
+
+
+      });
 
     });
 

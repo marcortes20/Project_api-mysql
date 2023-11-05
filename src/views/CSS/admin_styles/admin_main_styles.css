@@ -265,7 +265,9 @@ i{
 }
 
 
-
+.categories{
+  transition: opacity 0.5s ease;
+}
 
 
 .service_icons {
