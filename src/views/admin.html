@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../CSS/main_styles.css">
-  <link rel="stylesheet" href="../CSS/header_styles.css">
-  <link rel="stylesheet" href="../CSS/footer_styles.css">
+  <link rel="stylesheet" href="../CSS/admin_styles/admin_main_styles.css">
+  <link rel="stylesheet" href="../CSS/admin_styles/admin_header_styles.css">
+  <link rel="stylesheet" href="../CSS/admin_styles/admin_footer_styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap" rel="stylesheet">
-
+  <script src="https://kit.fontawesome.com/910f16346a.js" crossorigin="anonymous"></script>
   <title>My landing page</title>
 </head>
 
@@ -45,10 +45,12 @@
 
       <div class="header-title">
         <h1 id="company_name" style="font-size: 45px;"></h1>
+        <button id="btnEditCompany" class="btnEdit" style="background: transparent; border: none; cursor: pointer;"><i
+            class="fa-solid fa-pen-to-square"></i></button>
       </div>
 
       <div class="nav-options">
-        
+
         <ul class="first-menu-options">
           <a href="../index.html">Base page</a>
           <li><a id="menu_option_1" href="#start"></a></li>
@@ -92,6 +94,7 @@
     </section>
 
     <section class="content-two" id="products">
+
       <div class="content_two_information">
 
         <h2 id="title_section_2">NEW COLLECTION</h2>
@@ -110,8 +113,19 @@
             </div>
 
           </div>
-          <img id="picture-content_two" src="" alt="">
 
+          <div id="carousel">
+
+
+
+            <img id="leftButton" src="../Assets/arrow-left.svg" alt="">
+
+            <img id="picture-content_two" src="" alt="">
+
+            <img id="righttButton" src="../Assets/arrow-right.svg" alt="">
+
+
+          </div>
           <div id="content-information-picture-one">
             <div id="text-1">
               <p><b id="description_product"></b><br></p>
@@ -137,15 +151,25 @@
 
     <section class="content-three">
 
+      <div id="addCategoryModal" class="modal">
+        <div class="modal-content">
+          <form id="addCategoryForm">
+            <label for="username">Image url:</label>
+            <input type="text" id="categoryImg" name="img" required>
+            <input type="hidden" name="company_id" value=1>
+            <input type="submit" value="submit">
+          </form>
+        </div>
+      </div>
 
-      <h2 id="title_content_three">CATEGORIES</h2>
+      <div class="title-addContainer">
+        <h2 id="title_content_three">CATEGORIES</h2>
+        <button id="btnAddCategory" class="btnAdd" style="background: transparent; border: none; cursor: pointer;"><i
+            class="fa-solid fa-circle-plus"></i></button>
+      </div>
 
-      <div class="container">
+      <div id="catContainer" class="container">
 
-        <img id="content_three_img_1" src="" text="ELEGANT">
-        <img id="content_three_img_2" src="" text="SUMMER">
-        <img id="content_three_img_3" src="" text="DENIM">
-        <img id="content_three_img_4" src="" text="SPORT">
 
       </div>
 
@@ -155,67 +179,49 @@
     <section class="content-four" id="services">
 
 
-      <div class="services_content">
 
+
+      <div id="addServiceModal" class="modal">
+        <div class="modal-content">
+          <form id="addServiceForm">
+            <div>
+              <label for="title">Service: </label>
+              <input type="text" id="titleService" name="title" required>
+            </div>
+            <div>
+              <label for="desccription">Description: </label>
+              <input type="text" id="descriptionService" name="desccription" required>
+            </div>
+            <div>
+              <label for="icon">Icon: </label>
+              <input type="text" id="iconService" name="icon" required>
+            </div>
+
+            <input type="submit" value="submit">
+
+            
+          </form>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 20px; padding: 20px;">
+
+      <div class="title-addContainer">
         <h1 id="title_content_four">¿What are our services?</h1>
+        <button id="btnAddService" class="btnAdd" style="background: transparent; border: none; cursor: pointer;"><i
+            class="fa-solid fa-circle-plus"></i></button>
+      </div>
 
-        <div class="service_1">
+      <div id="services_container">
 
-          <div class="img_service">
-            <img id="ico1" img src="" alt="">
-          </div>
-
-          <div id="service_content_1">
-            <h3></h3>
-            <p></p>
-          </div>
-
-        </div>
-
-        <div class="service_2">
-
-          <div class="img_service">
-            <img id="ico2" src="" alt="">
-          </div>
-
-          <div id="service_content_2">
-            <h3></h3>
-            <p></p>
-          </div>
-
-        </div>
-
-        <div class="service_3">
-
-          <div class="img_service">
-            <img id="ico3" src="" alt="">
-          </div>
-
-          <div id="service_content_3">
-            <h3></h3>
-            <p></p>
-          </div>
-
-        </div>
-
-        <div class="service_4">
-
-          <div class="img_service">
-            <img id="ico4" src="" alt="">
-          </div>
-
-          <div id="service_content_4">
-
-            <h3></h3>
-            <p></p>
-
-          </div>
-
-
-
-        </div>
 
       </div>
+    </div>
+      </div>
+
+
+
+
       <div class="content_four_picture">
         <img id="picture_content_four" img src="../Assets/pic four.jpg" alt="">
       </div>
@@ -263,7 +269,7 @@
     </div>
 
   </footer>
-  <script src="../JS/main.js"></script>
+  <script src="../JS/admin.js"></script>
 </body>
 
 </html>

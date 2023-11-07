@@ -2,15 +2,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   redirections();
   contact_window_bahavior();
+  reload_page();
 
 
-  fetch('http://localhost:3000/Project/api/companies/1')
-    .then((response) => response.json())
-    .then((company) => {
-      console.log(company);
-      load_header(company);
-      load_main(company);
-    })
+
+//   let btn_reload = document.getElementById('reload');
+//   btn_reload.addEventListener("click", function(event) {
+//     // Evita que el enlace redireccione a la URL especificada en 'href'
+//     event.preventDefault();
+//     reload_page();
+// });
+  
+  function reload_page() {
+    
+    fetch('http://localhost:3000/Project/api/companies/1')
+      .then((response) => response.json())
+      .then((company) => {
+        console.log(company);
+        load_header(company);
+        load_main(company);
+      })
+  }
 
   function load_header(header_information) {
 
@@ -107,23 +119,61 @@ document.addEventListener('DOMContentLoaded', function () {
     //cargando seccion 3
 
     main_information.categories.forEach(option => {
-      // obtenemos cada uno de los enlaces de la lista de productos
-      document.getElementById(`content_three_img_${option.id}`).src = option.img
+      
+      let categories_container = document.getElementById('cat_container');
+
+      let new_category = document.createElement("img");
+
+      new_category.src = option.img;
+
+      new_category.classList.add("transicion-category");
+      
+      categories_container.appendChild(new_category);
+      
     });
-
-
-
-
-
 
 
     //cargando seccion 4
 
+    //obetenemos el contennedor padre de los servicios
+    let services_container = document.getElementById('services_container');
+
+
     main_information.services.forEach(option => {
-      //cargamos cada titulo y parafo de los servicios
-      document.getElementById(`ico${option.id}`).src = option.icon
-      document.querySelector(`#service_content_${option.id} h3`).textContent = option.title;
-      document.querySelector(`#service_content_${option.id} p`).textContent = option.desccription;
+
+      //create a new div to the service
+      let new_service = document.createElement('div');
+      new_service.classList.add('service');
+
+      //create content to save title and description
+      let service_content = document.createElement('div');
+
+      //create new img tag
+      let img_service = document.createElement('img');
+      img_service.classList.add('service_icons');
+      img_service.src = option.icon;
+
+
+      
+
+
+      
+
+      let service_title = document.createElement('h3')
+      let service_description = document.createElement('p');
+
+      service_title.textContent = option.title;
+
+      service_description.textContent = option.desccription;
+
+      service_content.appendChild(service_title);
+      service_content.appendChild(service_description);
+
+      new_service.appendChild(img_service);
+      new_service.appendChild(service_content);
+
+      services_container.appendChild(new_service);
+
     });
 
 
