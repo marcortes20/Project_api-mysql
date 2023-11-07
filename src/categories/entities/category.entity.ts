@@ -10,10 +10,7 @@ export class Category {
   @Column()
   img: string;
 
-  @ManyToOne(() => Company, company => company.categories, {
-    // cascade: true,
-    eager: true, // para que traiga los company  al hacer un findOne
-  })
+  @ManyToOne(() => Company, company => company.categories)
   company: Company;
 
 
