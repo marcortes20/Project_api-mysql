@@ -24,10 +24,7 @@ export class Product {
 
 
 
-  @ManyToOne(() => Company, company => company.products, {
-    // cascade: true,
-    eager: true, // para que traiga las raza al hacer un findOne
-  })
+  @ManyToOne(() => Company, company => company.products)
   company: Company;
 
 }
