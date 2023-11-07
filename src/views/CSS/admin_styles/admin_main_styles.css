@@ -21,6 +21,12 @@ b {
   flex: 1;
 }
 
+.header-title{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .content_one {
   background-color: white;
   display: flex;
@@ -50,17 +56,24 @@ b {
   gap: 5px;
 }
 
-.category_delete i{
+.btnDelete i{
   color: red; /* Color del icono */
+  font-size: 25px;
 }
 
-.category_edit i{
+.btnEdit i{
   color: blue;
+  font-size: 25px;
+}
+#btnEditCompany i{
+  font-size: 35px;
+}
+.btnAdd i {
+  color: green;
+  font-size: 40px;
 }
 
-i{
-  font-size: 21px; /* Tamaño del icono */
-}
+
 
 
 
@@ -208,6 +221,13 @@ i{
 
 }
 
+.title-addContainer{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .container img {
   display: flex;
@@ -270,6 +290,7 @@ i{
   gap: 40px;
   justify-content: center;
   margin-left: 100px;
+  flex: 1;
 }
 
 
