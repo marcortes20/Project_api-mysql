@@ -49,10 +49,6 @@
   font-weight: bold;
 }
 
-.modal-content{
-  background:linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(197, 197,197)100%);
-}
-
 .modal-content h2{
   text-align:  center;
 }
@@ -60,7 +56,7 @@
 .btn_container{
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 

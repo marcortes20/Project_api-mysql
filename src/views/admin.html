@@ -45,6 +45,8 @@
 
       <div class="header-title">
         <h1 id="company_name" style="font-size: 45px;"></h1>
+        <button id="btnEditCompany" class="btnEdit" style="background: transparent; border: none; cursor: pointer;"><i
+            class="fa-solid fa-pen-to-square"></i></button>
       </div>
 
       <div class="nav-options">
@@ -114,15 +116,15 @@
 
           <div id="carousel">
 
-            
-            
-            <img id ="leftButton" src="../Assets/arrow-left.svg" alt="">
+
+
+            <img id="leftButton" src="../Assets/arrow-left.svg" alt="">
 
             <img id="picture-content_two" src="" alt="">
-            
+
             <img id="righttButton" src="../Assets/arrow-right.svg" alt="">
-            
-            
+
+
           </div>
           <div id="content-information-picture-one">
             <div id="text-1">
@@ -141,7 +143,7 @@
           <button id="button_3" type="button"></button>
           <button id="button_4" type="button"></button>
         </div>
-        
+
       </div>
 
       <!-- Agrega aquí tu contenido principal -->
@@ -149,8 +151,22 @@
 
     <section class="content-three">
 
+      <div id="addCategoryModal" class="modal">
+        <div class="modal-content">
+          <form id="addCategoryForm">
+            <label for="username">Image url:</label>
+            <input type="text" id="categoryImg" name="img" required>
+            <input type="hidden" name="company_id" value=1>
+            <input type="submit" value="submit">
+          </form>
+        </div>
+      </div>
 
-      <h2 id="title_content_three">CATEGORIES</h2>
+      <div class="title-addContainer">
+        <h2 id="title_content_three">CATEGORIES</h2>
+        <button id="btnAddCategory" class="btnAdd" style="background: transparent; border: none; cursor: pointer;"><i
+            class="fa-solid fa-circle-plus"></i></button>
+      </div>
 
       <div id="catContainer" class="container">
 
@@ -163,12 +179,44 @@
     <section class="content-four" id="services">
 
 
-      <div id="services_container">
 
-        <h1 id="title_content_four">¿What are our services?</h1>
 
+      <div id="addServiceModal" class="modal">
+        <div class="modal-content">
+          <form id="addServiceForm">
+            <div>
+              <label for="title">Service: </label>
+              <input type="text" id="titleService" name="title" required>
+            </div>
+            <div>
+              <label for="desccription">Description: </label>
+              <input type="text" id="descriptionService" name="desccription" required>
+            </div>
+            <div>
+              <label for="icon">Icon: </label>
+              <input type="text" id="iconService" name="icon" required>
+            </div>
+
+            <input type="submit" value="submit">
+
+            
+          </form>
+        </div>
       </div>
 
+      <div style="display: flex; flex-direction: column; gap: 20px; padding: 20px;">
+
+      <div class="title-addContainer">
+        <h1 id="title_content_four">¿What are our services?</h1>
+        <button id="btnAddService" class="btnAdd" style="background: transparent; border: none; cursor: pointer;"><i
+            class="fa-solid fa-circle-plus"></i></button>
+      </div>
+
+      <div id="services_container">
+
+
+      </div>
+    </div>
       </div>
 
 
