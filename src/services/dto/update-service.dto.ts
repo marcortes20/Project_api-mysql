@@ -17,7 +17,7 @@ export class UpdateServiceDto extends PartialType(CreateServiceDto) {
   icon: string;
 
   @IsNumber()
-
+  @IsOptional()
   company_id: number;
 
 }
