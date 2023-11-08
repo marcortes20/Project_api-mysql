@@ -1,3 +1,4 @@
+/*Aplica estilos a toda la pagina.*/
 body {
   display: flex;
   flex-direction: column;
@@ -5,15 +6,24 @@ body {
 
 h1,
 h2,
-h3 {
+h3 { /*Tipografia para los titulos h3.*/
   font-family: 'Nunito Sans', sans-serif;
 }
 
 p,
-b {
+b { /*Tipografia para los los textos P.*/
   font-family: 'Zilla Slab', serif;
 }
 
+/*Estilos del titulo*/
+.header-title{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+ 
+/*Estilos generales para las 4 secciones de la pagina*/
 .main {
   margin-top: 60px;
   padding-left: 0px;
@@ -21,12 +31,7 @@ b {
   flex: 1;
 }
 
-.header-title{
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
+/*Estilos para toda la sección de la descripción*/
 .content_one {
   background-color: white;
   display: flex;
@@ -34,49 +39,15 @@ b {
   gap: 10%;
 }
 
-.edit_delete_container_cat button {
-  height: 36px;
-  border-radius: 3px;
-  background-color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.edit_delete_container_serv button {
-  height: 36px;
-  border-radius: 3px;
-  background-color: #FCE1D3;
-  border: none;
-  cursor: pointer;
-}
-
-.edit_delete_container_serv, .edit_delete_container_cat{
+/*Ordena el titulo de decrip y el +*/
+.title-addContainer{
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-.btnDelete i{
-  color: red; /* Color del icono */
-  font-size: 25px;
-}
-
-.btnEdit i{
-  color: blue;
-  font-size: 25px;
-}
-#btnEditCompany i{
-  font-size: 35px;
-}
-.btnAdd i {
-  color: green;
-  font-size: 40px;
-}
-
-
-
-
-
+/*Estilos de la descripción*/
 .content_one_information {
   display: flex;
   flex-direction: column;
@@ -85,19 +56,19 @@ b {
   justify-content: center;
 }
 
+/*Estilos especuficos para la foto, Seccón 1*/
 .content_one_picture {
   display: flex;
   justify-content: center;
 }
 
-
+/*Estilos para la foto*/
 .picture_one {
   width: 450px;
   border-radius: 5px;
 }
 
-
-
+/*Estilos para toda la sección de la colección.*/
 .content-two {
   padding: 20px;
   background-color: #e4e3d2;
@@ -106,13 +77,22 @@ b {
   justify-content: center;
 }
 
+/*Estilos generales para la infomación de esta sección*/
 .content_two_information {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
+/*Estilos para el descuento*/
+.discount_field {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
+/*Estilos del carrusel*/
 #carousel {
   display: flex;
   align-items: center;
@@ -120,6 +100,7 @@ b {
 
 }
 
+/*Botón y animación para el botón*/
 #leftButton,
 #righttButton {
   cursor: pointer;
@@ -127,13 +108,12 @@ b {
   user-select: none;
 }
 
-
+/*Estilos para los productos de la nueva colección*/
 #content-product {
   background-color: white;
   border-radius: 10px;
   width: 500px;
   height: auto;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,6 +121,7 @@ b {
   gap: 15px;
 }
 
+/*Estilos para la sección del descuento */
 #content-discount {
   margin-top: 15px;
   border-radius: 50%;
@@ -151,18 +132,16 @@ b {
   align-items: center;
   display: flex;
   justify-content: center;
-
-
 }
 
+/*Estilos para las fotos de esta sección*/
 #picture-content_two {
-
-  transition: opacity 0.5s;
-
+  transition: opacity 0.5s; /*Efecto de transición*/
   width: 400px;
   height: 400px;
 }
 
+/*Estilos para la información de las imágenes de la colección*/
 #content-information-picture-one {
   width: 400px;
   display: flex;
@@ -171,10 +150,12 @@ b {
   margin-bottom: 15px;
 }
 
+/*Alinea el texto de la imagen*/
 #text-1 {
   text-align: left;
 }
 
+/*Estilos para el + de esta sección*/
 #content-more {
   background-color: #050505;
   height: 50px;
@@ -186,6 +167,7 @@ b {
   align-items: center;
 }
 
+/*Estilos de forma para los botones de esta sección*/
 #buttons {
   display: flex;
   flex-direction: row;
@@ -194,6 +176,7 @@ b {
   margin-bottom: 20px;
 }
 
+/*Estilos para los botones de esta sección*/
 .clothes-buttons button {
   border-radius: 50%;
   background-color: white;
@@ -201,70 +184,125 @@ b {
   width: 50px;
   height: 50px;
   transition: background-color 0.5s ease;
-
 }
 
+/*cambia de color al poner el pulsor*/
 .clothes-buttons button:hover {
   background-color: #050505;
 }
 
+/*Estilos generales para toda la sección*/
 .content-three {
   padding-top: 50px;
 }
 
+/*Estilo para el título*/
+#title_content_three {
+  text-align: center;
+}
+
+/*Estilos específicos para las imágenes agrupadas */
 .container {
   display: flex;
   margin: auto;
   padding: 20px;
   width: 60%;
   height: 600px;
-
 }
 
-.title-addContainer{
+/*Estilos de los botones de editar y eliminar*/
+.edit_delete_container_cat button {
+  height: 36px;
+  border-radius: 3px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/*Estilos de los botones de editar y eliminar en serv*/
+.edit_delete_container_serv button {
+  height: 36px;
+  border-radius: 3px;
+  background-color: #FCE1D3;
+  border: none;
+  cursor: pointer;
+}
+
+/*Estilos de los botones de editar y eliminar en cat*/
+.edit_delete_container_serv, .edit_delete_container_cat{
   display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 5px;
 }
 
+/*color del icono de eliminar*/
+.btnDelete i{
+  color: red;
+  font-size: 25px;
+}
 
+/*color del icono de editar*/
+.btnEdit i{
+  color: blue;
+  font-size: 25px;
+}
+
+/*Tamaño del icono + en company*/
+#btnEditCompany i{
+  font-size: 35px;
+}
+
+/*color del icono +*/
+.btnAdd i {
+  color: black;
+  font-size: 40px;
+}
+
+/*Opacidad*/
+.categories{
+  transition: opacity 0.5s ease;
+}
+
+/*Estilos para las imagenes*/
 .container img {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 0px;
   flex-grow: 1;
-  object-fit: cover;
-  /*se ajusta al tamaño del contenedor*/
-  opacity: .8;
-  transition: .7s ease;
+  object-fit: cover; /*se ajusta al tamaño del contenedor*/
+  opacity: .8; /*Opacidad*/
+  transition: .7s ease; /*Transición*/
   margin-right: 25px;
 }
 
+/*Hace que más clara la imagen al poner el pulsor sobre ella*/
 .container img:hover {
   cursor: crosshair;
   opacity: 1;
-
-}
-
-.discount_field {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-}
-
-
-
-#title_content_three {
-  text-align: center;
 }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Estilos generales para toda la sección*/
 .content-four {
   background-color: #FCE1D3;
   display: flex;
@@ -273,17 +311,13 @@ b {
 
 }
 
-.content_four_picture {
-  margin-left: 20px;
+/*Estilos generales para los servicios*/
+.service {
+  display: flex;
+  gap: 40px;
 }
 
-#picture_content_four {
-  width: 350px;
-  border-radius: 20px;
-  padding: 10px;
-  margin-left: 150px;
-}
-
+/*Estilos para los servicios*/
 #services_container {
   display: flex;
   flex-direction: column;
@@ -293,16 +327,25 @@ b {
   flex: 1;
 }
 
-
-.categories{
-  transition: opacity 0.5s ease;
+/*Estilos generales para la imagen*/
+.content_four_picture {
+  margin-left: 20px;
 }
 
+/*Estilos específicos para la imagen*/
+#picture_content_four {
+  width: 350px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 150px;
+}
+
+/*transción de los servicios*/
 .service{
   transition: opacity 0.5s ease;
 }
 
-
+/*Estilos para los iconos*/
 .service_icons {
   width: 70px;
   height: 70px;
@@ -310,8 +353,3 @@ b {
 }
 
 
-.service {
-
-  display: flex;
-  gap: 40px;
-}

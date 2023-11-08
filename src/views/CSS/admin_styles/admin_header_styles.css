@@ -1,11 +1,60 @@
-* {
+/*Aplica estilos a toda la pagina.*/
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/*Añade estilos adicionales según tus preferencias */
+.navigation-menu {
+  font-size: larger;
+  padding-left: 10px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;/* Hace que el encabezado sea fijo en la parte superior */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px 10PX;
+  z-index: 100;/* Asegura que el encabezado esté en la parte superior de otros elementos */
+}
 
-/* Estilos para el fondo oscuro detrás de la ventana emergente */
+
+/*Estilos generales para el menú*/
+.nav-options {
+  display: flex;
+  gap: 30px;
+}
+
+/*Estilos generales para el menú principal*/
+.first-menu-options {
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+}
+
+/*Estilos específicos para el menú*/
+.first-menu-options a {
+  text-decoration: none;
+  color: #050505;
+  transition: color 0.2s;
+}
+
+/*Cambia de color cuando el pulsor está sobre el menú*/
+.first-menu-options a:hover {
+  color: #0056b3;
+}
+
+/*Estilos para el menú de los iconos*/
+.second-menu-options {
+  list-style-type: none;
+  display: flex;
+  gap: 5px;
+}
+
+/*Estilos para el fondo oscuro detrás de la ventana emergente de concacto */
 .modal {
   display: none;
   position: fixed;
@@ -18,7 +67,7 @@
   overflow: auto;
 }
 
-/* Estilos para el contenido de la ventana emergente */
+/*Estilos para el contenido de la ventana emergente  de servicios y colección*/
 .modal-content {
   background-color: #fff;
   max-width: 400px;
@@ -29,6 +78,48 @@
   position: relative;
 }
 
+
+/*Estilo para las etiquetas y campos de entrada de servicios */
+#addServiceForm div {
+  margin-bottom: 10px; 
+}
+
+/*Estilo para el formulario de servicios */
+#addServiceForm label {
+  display: block; 
+  font-weight: bold; 
+  margin-bottom: 5px; 
+}
+
+/*Estilo para la descriptión*/
+#descriptionService{
+  width: 100%; 
+  padding: 80px; 
+  margin-bottom: 10px; 
+}
+
+/*Estilo para el texto-Ico*/
+#titleService,  #iconService {
+  width: 100%; 
+  padding: 5px; 
+  margin-bottom: 10px; 
+}
+
+/*Estilo para el botón de submit */
+input[type="submit"] {
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 10px 20px; 
+  border: none; 
+  cursor: pointer; 
+}
+
+/* Estilo para el botón de envío al pasar el cursor sobre submit */
+input[type="submit"]:hover {
+  background-color: #0056b3; 
+}
+
+
 /* Estilos para el botón de cierre (la "x") */
 .close {
   position: absolute;
@@ -38,28 +129,65 @@
   cursor: pointer;
 }
 
-/* Estilos para el formulario */
+
+/*Estilo para las etiquetas dentro del formulario */
+#addCategoryForm label {
+  display: block; 
+  margin-bottom: 10px;
+  font-weight: bold; 
+}
+
+/*Estilo para los campos de entrada de texto */
+#categoryImg {
+  margin-top: 10px;
+  width: 100%;
+  padding: 5px; 
+  margin-bottom: 10px;
+}
+
+/*Estilo para el botón de Add Img */
+input[type="submit"] {
+  display: flex;
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 10px 20px; 
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none; 
+  cursor: pointer;
+}
+
+/*Estilo para el botón de envío al pasar el cursor sobre él */
+input[type="submit"]:hover {
+  background-color: #0056b3; 
+}
+
+
+/*Estilos para el formulario */
 #emailForm {
   text-align: left;
 }
 
+/*Estilos para el formulario */
 #emailForm label {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
 }
 
+/*Estilos para los tutulos h2 del form*/
 .modal-content h2{
   text-align:  center;
 }
 
+/*Estilos para el botón*/
 .btn_container{
   width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
 
-
+/*Estilos para los elementos de entrada (input-textare)*/
 #emailForm input[type="email"],
 #emailForm input[type="text"],
 #emailForm textarea {
@@ -71,6 +199,7 @@
   font-size: 16px;
 }
 
+/*Estilos especificos para los botones*/
 #emailForm button[type="submit"] {
   background-color: #007bff;
   color: #fff;
@@ -81,61 +210,12 @@
   cursor: pointer;
 }
 
+/*Cambia de color cuando el pulsor está sobre el botón*/
 #emailForm button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-
-
-
-/* Añade estilos adicionales según tus preferencias */
-
-.navigation-menu {
-  font-size: larger;
-  padding-left: 10px;
-  padding-right: 20px;
-  display: flex;
-  justify-content: space-between;
-  position: fixed;
-  /* Hace que el encabezado sea fijo en la parte superior */
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white;
-  padding: 10px 10PX;
-  z-index: 100;
-  /* Asegura que el encabezado esté en la parte superior de otros elementos */
-}
-
-
-
-.nav-options {
-  display: flex;
-  gap: 30px;
-}
-
-.first-menu-options {
-  list-style-type: none;
-  display: flex;
-  gap: 30px;
-}
-
-.first-menu-options a {
-  text-decoration: none;
-  color: #050505;
-  transition: color 0.2s;
-}
-
-.first-menu-options a:hover {
-  color: #0056b3;
-}
-
-.second-menu-options {
-  list-style-type: none;
-  display: flex;
-  gap: 5px;
-}
-
+/*Estilos para cuando el ancho de la pantalla es más de 500px */
 @media (max-width: 500px)
 {
   .navigation-menu{

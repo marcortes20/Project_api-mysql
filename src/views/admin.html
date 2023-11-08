@@ -78,11 +78,15 @@
     <section class="content_one" id="start">
 
       <div class="content_one_information">
-
-        <h2 id="title_secction_1"></h2>
+        <div class="title-addContainer">
+          <h2 id="title_secction_1"></h2>
+          <button id="btnEditCompany" class="btnEdit" style="background: transparent; border: none; cursor: pointer;"><i
+            class="fa-solid fa-pen-to-square"></i></button>
+        </div>
         <p style="line-height: 1.5;" id="paragraph_section_1"></p>
 
       </div>
+      
 
       <div class="content_one_picture">
 
@@ -146,7 +150,6 @@
 
       </div>
 
-      <!-- Agrega aquí tu contenido principal -->
     </section>
 
     <section class="content-three">
@@ -154,10 +157,10 @@
       <div id="addCategoryModal" class="modal">
         <div class="modal-content">
           <form id="addCategoryForm">
-            <label for="username">Image url:</label>
+            <label for="username"><p>Image URL :<p></label>
             <input type="text" id="categoryImg" name="img" required>
             <input type="hidden" name="company_id" value=1>
-            <input type="submit" value="submit">
+            <input type="submit" value="Add Img">
           </form>
         </div>
       </div>
@@ -178,9 +181,6 @@
 
     <section class="content-four" id="services">
 
-
-
-
       <div id="addServiceModal" class="modal">
         <div class="modal-content">
           <form id="addServiceForm">
@@ -197,7 +197,7 @@
               <input type="text" id="iconService" name="icon" required>
             </div>
 
-            <input type="submit" value="submit">
+            <input type="submit" value="Add Service">
 
             
           </form>
