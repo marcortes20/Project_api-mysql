@@ -8,21 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
   redirections();
   contact_window_bahavior();
   charge_page();
-  addEventButtons()
-
+  addEventButtons();
+  submitForsmEvents();
+  formsBehaviors();
 
 });
 
 
-function addEventButtons() {
-
-  const butttonAddCategory = document.getElementById("btnAddCategory").addEventListener("click", () => {
-    add_category_window();
-  });
-
-  const butttonAddService = document.getElementById("btnAddService").addEventListener("click", () => {
-    add_service_window();
-  });
+function formsBehaviors() {
 
 
   // EVENTS TO THE ADD CATEGORY FORM
@@ -34,6 +27,27 @@ function addEventButtons() {
   });
 
 
+  const addServiceModal = document.getElementById("addServiceModal");
+  window.addEventListener('click', (event) => {
+    if (event.target == addServiceModal) {
+      addServiceModal.style.display = 'none';
+    }
+  });
+
+
+  const editServiceModal = document.getElementById("editServiceModal");
+  window.addEventListener('click', (event) => {
+    if (event.target == editServiceModal) {
+      editServiceModal.style.display = 'none';
+    }
+  });
+
+}
+
+
+function submitForsmEvents() {
+
+  const addCategoryModal = document.getElementById("addCategoryModal");
   const formCategory = document.getElementById("addCategoryForm");
 
   formCategory.addEventListener("submit", (event) => {
@@ -58,20 +72,11 @@ function addEventButtons() {
       });
     addCategoryModal.style.display = "none";
     formCategory.reset();
-    
+
   });
 
 
-  
-  // EVENTS TO THE ADD SERVICE FORM
   const addServiceModal = document.getElementById("addServiceModal");
-  window.addEventListener('click', (event) => {
-    if (event.target == addServiceModal) {
-      addServiceModal.style.display = 'none';
-    }
-  });
-
-
   const formService = document.getElementById("addServiceForm");
 
   formService.addEventListener("submit", (event) => {
@@ -97,8 +102,65 @@ function addEventButtons() {
       });
     addServiceModal.style.display = "none";
     formService.reset();
+  });
+
+
+
+  const editServiceModal = document.getElementById("editServiceModal");
+  const editServiceForm = document.getElementById("editServiceForm");
+
+
+  editServiceForm.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+    const serviceID = document.getElementById("serviceID");
+    editTitleService = document.getElementById("editTitleService");
+
+    editDescriptionService = document.getElementById("editDescriptionService");
+
+    editIconService = document.getElementById("editIconService");
     
 
+
+    fetch(`http://localhost:3000/Project/api/services/${serviceID.value}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        title: editTitleService.value,
+        desccription: editDescriptionService.value,
+        icon: editIconService.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        editServiceForm.reset();
+        editServiceModal.style.display = "none";
+        reloadServices();
+      })
+  
+
+
+  })
+
+
+
+}
+
+
+function addEventButtons() {
+
+  const butttonAddCategory = document.getElementById("btnAddCategory").addEventListener("click", () => {
+    const addCategoryModal = document.getElementById("addCategoryModal");
+
+    addCategoryModal.style.display = "block";
+  });
+
+  const butttonAddService = document.getElementById("btnAddService").addEventListener("click", () => {
+    const addServiceModal = document.getElementById("addServiceModal");
+
+    addServiceModal.style.display = "block";
   });
 
 
@@ -112,18 +174,8 @@ function delete_category(id_category) {
 
 }
 
-
-function add_category_window() {
-
-
-  const addCategoryModal = document.getElementById("addCategoryModal");
-
-  addCategoryModal.style.display = "block";
-  
-}
 // This function is used to charge al categories from bd to html
 function loadCategories(option) {
-  console.log("load categories");
   // search the father of news categories
   let catContainer = document.getElementById('catContainer');
 
@@ -133,6 +185,7 @@ function loadCategories(option) {
 
   //create the father or the edit delete buttos categoies
   let edit_delete_container = document.createElement("div");
+
 
   //create delete/edit buttons
   let btn_delete = document.createElement("button");
@@ -172,9 +225,11 @@ function loadCategories(option) {
   catContainer.appendChild(edit_delete_container);
   catContainer.appendChild(new_category);
   new_category.style.opacity = 0;
+  edit_delete_container.style.opacity = 0;
   setTimeout(() => {
     new_category.style.opacity = 1;
-  }, 300);
+    edit_delete_container.style.opacity = 1;
+  }, 900);
 
 
   btn_delete.addEventListener('click', () => {
@@ -183,8 +238,8 @@ function loadCategories(option) {
 
     if (confirmDelete) {
 
-      new_category.style.opacity = 1;
       new_category.style.opacity = 0;
+      edit_delete_container.style.opacity = 0;
       // Después de un breve retraso, cambia la imagen y restaura la opacidad
       setTimeout(() => {
 
@@ -192,7 +247,7 @@ function loadCategories(option) {
         catContainer.removeChild(edit_delete_container);
         delete_category(option.id);
 
-      }, 500);
+      }, 900);
     }
 
 
@@ -208,7 +263,7 @@ function reloadCategories() {
   fetch('http://localhost:3000/Project/api/categories')
     .then((response) => response.json())
     .then((categories) => {
-      
+
       categories.forEach(option => {
 
         loadCategories(option);
@@ -233,8 +288,6 @@ function clearCategories() {
 }
 
 
-
-
 function reloadServices() {
 
   clearServices();
@@ -251,27 +304,17 @@ function reloadServices() {
 
 }
 
-function add_service_window() {
-
-  const addServiceModal = document.getElementById("addServiceModal");
-
-  addServiceModal.style.display = "block";
-
-
-}
-
 function clearServices() {
   const divElement = document.getElementById("services_container"); // Reemplaza "miDiv" con el ID de tu div
-  
+
   while (divElement.firstChild) {
     divElement.removeChild(divElement.firstChild);
   }
-  
+
 }
 
 function loadServices(option) {
 
-  console.log(`agregando el id ${option.id}`)
   let services_container = document.getElementById('services_container');
 
   //create the father or the edit delete buttos categoies
@@ -329,11 +372,43 @@ function loadServices(option) {
   new_service.appendChild(edit_delete_container);
   new_service.appendChild(img_service);
   new_service.appendChild(service_content);
-  new_service.style.opacity = 0;
+
   services_container.appendChild(new_service);
+  new_service.style.opacity = 0;
+
   setTimeout(() => {
     new_service.style.opacity = 1;
-  }, 300);
+  }, 900);
+
+
+
+  btn_edit.addEventListener("click", () => {
+
+    const editServiceModal = document.getElementById
+      ("editServiceModal");
+
+    ServiceID = document.getElementById("serviceID");
+
+    editTitleService = document.getElementById("editTitleService");
+
+    editDescriptionService = document.getElementById("editDescriptionService");
+
+    editIconService = document.getElementById("editIconService");
+
+    editTitleService.value = option.title;
+
+    editDescriptionService.value = option.desccription;
+
+    editIconService.value = option.icon;
+
+    serviceID.value = option.id;
+
+
+
+    editServiceModal.style.display = "block";
+
+  })
+
 
   btn_delete.addEventListener('click', () => {
 
@@ -350,7 +425,7 @@ function loadServices(option) {
 
         delete_service(option.id);
 
-      }, 500);
+      }, 900);
     }
 
   });
@@ -478,7 +553,7 @@ function load_main(main_information) {
         price_product.textContent = option.price;
         size_product.textContent = option.size;
 
-      }, 500);
+      }, 900);
     });
 
   });
@@ -500,10 +575,6 @@ function load_main(main_information) {
 
 
   //cargando seccion 4
-
-  //obetenemos el contennedor padre de los servicios
-  let services_container = document.getElementById('services_container');
-
 
   main_information.services.forEach(option => {
     loadServices(option);

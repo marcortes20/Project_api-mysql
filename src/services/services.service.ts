@@ -51,26 +51,11 @@ export class ServicesService {
       throw new BadRequestException('service not found');
     }
 
-    let company;
-
-    if (updateServiceDto.company_id) {
-
-      company = await this.company_Repo.findOneBy({ id: updateServiceDto.company_id });
-
-    }
-
-    if (!company) {
-
-      throw new BadRequestException('Company not found');
-    }
-
-
+  
 
     return await this.serviceRepository.save({
       ...service,
       ...updateServiceDto,
-      company
-
 
     })
 

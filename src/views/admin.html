@@ -204,6 +204,38 @@
         </div>
       </div>
 
+
+      <div id="editServiceModal" class="modal">
+        <div class="modal-content">
+          <form id="editServiceForm">
+            
+            <div>
+
+              <label for="id">Service ID: </label>
+              <input id="serviceID" type="text" name="id" value="Texto no editable" disabled>
+
+            </div>
+
+
+              <div>
+              <label for="title">Service: </label>
+              <input type="text" id="editTitleService" name="title" required>
+            </div>
+            <div>
+              <label for="desccription">Description: </label>
+              <textarea  id="editDescriptionService" name="desccription" required></textarea>
+            </div>
+            <div>
+              <label for="icon">Icon: </label>
+              <input type="text" id="editIconService" name="icon" required>
+            </div>
+
+            <input type="submit" value="submit">
+
+          </form>
+        </div>
+      </div>
+
       <div style="display: flex; flex-direction: column; gap: 20px; padding: 20px;">
 
       <div class="title-addContainer">
