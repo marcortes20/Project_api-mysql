@@ -327,22 +327,11 @@ b { /*Tipografia para los los textos P.*/
   flex: 1;
 }
 
-/*Estilos generales para la imagen*/
-.content_four_picture {
-  margin-left: 20px;
-}
 
-/*Estilos específicos para la imagen*/
-#picture_content_four {
-  width: 350px;
-  border-radius: 20px;
-  padding: 10px;
-  margin-left: 150px;
-}
 
 /*transción de los servicios*/
 .service{
-  transition: opacity 0.5s ease;
+  transition: opacity 2s ease;
 }
 
 /*Estilos para los iconos*/
