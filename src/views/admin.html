@@ -146,7 +146,6 @@
 
       </div>
 
-      <!-- Agrega aquí tu contenido principal -->
     </section>
 
     <section class="content-three">
@@ -160,11 +159,12 @@
             </div>
 
             <div>
-              <label for="img">Image url:</label>
+              <label for="img">Image URL:</label>
             <input type="text" id="editCategoryImg" name="img" required>
             </div>
 
-            <input type="submit" value="submit">
+
+            <input type="submit" value="Edith Category">
 
           </form>
         </div>
@@ -175,10 +175,10 @@
       <div id="addCategoryModal" class="modal">
         <div class="modal-content">
           <form id="addCategoryForm">
-            <label for="username">Image url:</label>
+            <label for="username">Image URL:</label>
             <input type="text" id="categoryImg" name="img" required>
             <input type="hidden" name="company_id" value=1>
-            <input type="submit" value="submit">
+            <input type="submit" value="Add Cotegory">
           </form>
         </div>
       </div>
@@ -218,7 +218,7 @@
               <input type="text" id="iconService" name="icon" required>
             </div>
 
-            <input type="submit" value="submit">
+            <input type="submit" value="Add Service">
 
 
           </form>
@@ -249,7 +249,7 @@
               <input type="text" id="editIconService" name="icon" required>
             </div>
 
-            <input type="submit" value="submit">
+            <input type="submit" value="Edith Service">
 
           </form>
         </div>
@@ -314,9 +314,12 @@
     </div>
 
     <div id="list_4" class="logos">
-      <img id="footer_ico_1" class="instagram-logo" src="../Assets/instagram.svg" alt="Gucci Logo">
-      <img id="footer_ico_2" class="facebook-logo" src="../Assets/brand-facebook-filled.svg" alt="Gucci Logo">
-      <img id="footer_ico_3" class="twiter-logo" src="../Assets/brand-twitter-filled.svg" alt="Gucci Logo">
+      <button id="btnInstagram" class="btnredes" style="background: transparent; border: none; cursor: pointer;">
+        <i class="fa-brands fa-instagram"></i></button>
+      <button id="btnInstagram" class="btnredes" style="background: transparent; border: none; cursor: pointer;">
+        <i class="fa-brands fa-facebook"></i></button>
+      <button id="btnInstagram" class="btnredes" style="background: transparent; border: none; cursor: pointer;">
+        <i class="fa-brands fa-twitter"></i></button>
     </div>
 
   </footer>
