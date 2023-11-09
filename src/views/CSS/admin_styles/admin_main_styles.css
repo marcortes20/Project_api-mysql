@@ -3,16 +3,11 @@ body {
   flex-direction: column;
 }
 
-h1,
-h2,
-h3 {
+*{
   font-family: 'Nunito Sans', sans-serif;
 }
 
-p,
-b {
-  font-family: 'Zilla Slab', serif;
-}
+
 
 .main {
   margin-top: 60px;
