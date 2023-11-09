@@ -26,7 +26,7 @@ function formsBehaviors() {
     }
   });
 
-
+  // EVENTS TO THE ADD SERVICE FORM
   const addServiceModal = document.getElementById("addServiceModal");
   window.addEventListener('click', (event) => {
     if (event.target == addServiceModal) {
@@ -34,7 +34,7 @@ function formsBehaviors() {
     }
   });
 
-
+  // EVENTS TO THE EDIT SERVICE FORM
   const editServiceModal = document.getElementById("editServiceModal");
   window.addEventListener('click', (event) => {
     if (event.target == editServiceModal) {
@@ -42,17 +42,40 @@ function formsBehaviors() {
     }
   });
 
+  // EVENTS TO THE EDIT CATEGORY FORM
   const editCategoryModal = document.getElementById("editCategoryModal");
   window.addEventListener('click', (event) => {
     if (event.target == editCategoryModal) {
       editCategoryModal.style.display = 'none';
     }
   });
+
+
+  // EVENTS TO THE EDIT COMPANY NAME FORM
+  const editCopanyNameModal = document.getElementById("editCopanyNameModal");
+  window.addEventListener('click', (event) => {
+    if (event.target == editCopanyNameModal) {
+      editCopanyNameModal.style.display = 'none';
+    }
+  });
+
+
+  // EVENTS TO THE EDIT COMPANY  FORM
+  const editCompanyModal = document.getElementById("editCompanyModal");
+  window.addEventListener('click', (event) => {
+    if (event.target == editCompanyModal) {
+      editCompanyModal.style.display = 'none';
+    }
+  });
+
+
 }
 
 
 function submitForsmEvents() {
 
+
+  //EVENTS TO SUBMIT ADD CATEGORY FORM
   const addCategoryModal = document.getElementById("addCategoryModal");
   const formCategory = document.getElementById("addCategoryForm");
 
@@ -82,6 +105,7 @@ function submitForsmEvents() {
   });
 
 
+  //EVENTS TO SUBMIT ADD SERVICE FORM
   const addServiceModal = document.getElementById("addServiceModal");
   const formService = document.getElementById("addServiceForm");
 
@@ -112,6 +136,7 @@ function submitForsmEvents() {
 
 
 
+  //EVENTS TO SUBMIT EDIT SERVICE FORM
   const editServiceModal = document.getElementById("editServiceModal");
   const editServiceForm = document.getElementById("editServiceForm");
 
@@ -148,7 +173,7 @@ function submitForsmEvents() {
 
 
 
-
+  //EVENTS TO SUBMIT EDIT CATEGORY FORM
   const editCategoryModal = document.getElementById("editCategoryModal");
 
   const editCategoryForm = document.getElementById("editCategoryForm");
@@ -180,6 +205,108 @@ function submitForsmEvents() {
       })
   })
 
+
+
+
+  //EVENTS TO SUBMIT EDIT COMPANY NAME FORM
+  const editCopanyNameModal = document.getElementById("editCopanyNameModal");
+
+  const editCompanyNameForm = document.getElementById("editCompanyNameForm");
+
+
+  editCompanyNameForm.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    const companyNameField = document.getElementById("companyNameField");
+
+    const company_nameTitle = document.getElementById("company_name");
+
+
+    fetch(`http://localhost:3000/Project/api/companies/1`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        company_name: companyNameField.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+
+
+        editCopanyNameModal.style.display = "none";
+        company_nameTitle.style.opacity = 0;
+
+        setTimeout(() => {
+          company_nameTitle.textContent = companyNameField.value;
+          company_nameTitle.style.opacity = 1;
+          editCompanyNameForm.reset();
+
+        }, 500);
+
+      })
+  })
+
+
+
+
+  //EVENTS TO SUBMIT EDIT COMPANY FORM
+
+  // this is the container of all company information
+  const companyInformation = document.getElementById("companyInformation");
+
+  const editCompanyModal = document.getElementById("editCompanyModal");
+
+  const editCompanyForm = document.getElementById("editCompanyForm");
+
+
+  editCompanyForm.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    //variables from html form
+    const companyTitle = document.getElementById("companyTitle");
+    const companyDescription = document.getElementById("companyDescription");
+    const companyImage = document.getElementById("companyImage");
+
+    //variables from html fields
+    const title_secction_1 = document.getElementById("title_secction_1");
+    const paragraph_section_1 = document.getElementById("paragraph_section_1");
+    const img_section_1 = document.getElementById("img_section_1");
+
+
+    fetch(`http://localhost:3000/Project/api/companies/1`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        company_title_description: companyTitle.value,
+        company_description:companyDescription.value,
+        company_img_description: companyImage.value ,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+
+
+        editCompanyModal.style.display = "none";
+        companyInformation.style.opacity = 0;
+
+        setTimeout(() => {
+
+          title_secction_1.textContent = companyTitle.value;
+          paragraph_section_1.textContent = companyDescription.value;
+          img_section_1.src = companyImage.value;
+          companyInformation.style.opacity = 1;
+          editCompanyForm.reset();
+        }, 500);
+
+      })
+  })
+
 }
 
 
@@ -191,10 +318,50 @@ function addEventButtons() {
     addCategoryModal.style.display = "block";
   });
 
+
   const butttonAddService = document.getElementById("btnAddService").addEventListener("click", () => {
     const addServiceModal = document.getElementById("addServiceModal");
 
     addServiceModal.style.display = "block";
+  });
+
+
+
+  const btnEditNameCompany = document.getElementById("btnEditNameCompany").addEventListener("click", () => {
+
+    const editCopanyNameModal = document.getElementById("editCopanyNameModal");
+
+    const companyNameField = document.getElementById("companyNameField");
+    const company_name = document.getElementById("company_name");
+
+    companyNameField.value = company_name.textContent;
+
+    editCopanyNameModal.style.display = "block";
+  });
+
+
+
+  const btnEditCompany = document.getElementById("btnEditCompany").addEventListener("click", () => {
+
+    const editCompanyModal = document.getElementById("editCompanyModal");
+
+    //variables from html fields
+    const title_secction_1 = document.getElementById("title_secction_1");
+    const paragraph_section_1 = document.getElementById("paragraph_section_1");
+    const img_section_1 = document.getElementById("img_section_1");
+
+    //variables from html form
+    const companyTitle = document.getElementById("companyTitle");
+    const companyDescription = document.getElementById("companyDescription");
+    const companyImage = document.getElementById("companyImage");
+
+    companyTitle.value = title_secction_1.textContent;
+
+    companyDescription.value = paragraph_section_1.textContent;
+    companyImage.value = img_section_1.src;
+
+
+    editCompanyModal.style.display = "block";
   });
 
 
@@ -255,15 +422,15 @@ function loadCategories(option) {
   //give class to make styles
   new_category.classList.add("categories");
 
+  new_category.style.opacity = 0;
+  edit_delete_container.style.opacity = 0;
   //add buttons
   catContainer.appendChild(edit_delete_container);
   catContainer.appendChild(new_category);
-  new_category.style.opacity = 0;
-  edit_delete_container.style.opacity = 0;
   setTimeout(() => {
     new_category.style.opacity = 1;
     edit_delete_container.style.opacity = 1;
-  }, 900);
+  }, 500);
 
 
   btn_edit.addEventListener("click", () => {
@@ -298,7 +465,7 @@ function loadCategories(option) {
         catContainer.removeChild(edit_delete_container);
         delete_category(option.id);
 
-      }, 900);
+      }, 500);
     }
 
 
@@ -336,8 +503,9 @@ function clearCategories() {
     divElement.removeChild(divElement.firstChild);
   }
 
-}
 
+
+}
 
 function reloadServices() {
 
