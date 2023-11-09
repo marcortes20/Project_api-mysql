@@ -294,13 +294,8 @@ b {
 }
 
 
-.categories, .edit_delete_container_cat{
-  transition: opacity 2s ease;
-  transition: width 5s ease;
-}
-
-.service{
-  transition: opacity 2s ease;
+.categories, .edit_delete_container_cat, .content_one, .service{
+  transition: opacity 1s ease;
 }
 
 
