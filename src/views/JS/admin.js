@@ -42,6 +42,12 @@ function formsBehaviors() {
     }
   });
 
+  const editCategoryModal = document.getElementById("editCategoryModal");
+  window.addEventListener('click', (event) => {
+    if (event.target == editCategoryModal) {
+      editCategoryModal.style.display = 'none';
+    }
+  });
 }
 
 
@@ -109,7 +115,6 @@ function submitForsmEvents() {
   const editServiceModal = document.getElementById("editServiceModal");
   const editServiceForm = document.getElementById("editServiceForm");
 
-
   editServiceForm.addEventListener("submit", (event) => {
 
     event.preventDefault();
@@ -119,7 +124,7 @@ function submitForsmEvents() {
     editDescriptionService = document.getElementById("editDescriptionService");
 
     editIconService = document.getElementById("editIconService");
-    
+
 
 
     fetch(`http://localhost:3000/Project/api/services/${serviceID.value}`, {
@@ -139,12 +144,41 @@ function submitForsmEvents() {
         editServiceModal.style.display = "none";
         reloadServices();
       })
-  
-
-
   })
 
 
+
+
+  const editCategoryModal = document.getElementById("editCategoryModal");
+
+  const editCategoryForm = document.getElementById("editCategoryForm");
+
+
+  editCategoryForm.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    const editCategoryImg = document.getElementById("editCategoryImg");
+    const CategoryID = document.getElementById("CategoryID");
+
+
+    fetch(`http://localhost:3000/Project/api/categories/${CategoryID.value}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        img: editCategoryImg.value,
+
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        editCategoryForm.reset();
+        editCategoryModal.style.display = "none";
+        reloadCategories();
+      })
+  })
 
 }
 
@@ -230,6 +264,23 @@ function loadCategories(option) {
     new_category.style.opacity = 1;
     edit_delete_container.style.opacity = 1;
   }, 900);
+
+
+  btn_edit.addEventListener("click", () => {
+
+    const editCategoryModal = document.getElementById("editCategoryModal");
+
+    const CategoryID = document.getElementById("CategoryID");
+
+    const editCategoryImg = document.getElementById("editCategoryImg");
+
+    CategoryID.value = option.id;
+
+    editCategoryImg.value = option.img;
+
+    editCategoryModal.style.display = "block";
+
+  })
 
 
   btn_delete.addEventListener('click', () => {
