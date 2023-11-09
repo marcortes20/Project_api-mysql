@@ -151,6 +151,27 @@
 
     <section class="content-three">
 
+      <div id="editCategoryModal" class="modal">
+        <div class="modal-content">
+          <form id="editCategoryForm">
+
+            <div>
+              <input style="display: none;" id="CategoryID" type="text" name="id" disabled>
+            </div>
+
+            <div>
+              <label for="img">Image url:</label>
+            <input type="text" id="editCategoryImg" name="img" required>
+            </div>
+
+            <input type="submit" value="submit">
+
+          </form>
+        </div>
+      </div>
+
+
+
       <div id="addCategoryModal" class="modal">
         <div class="modal-content">
           <form id="addCategoryForm">
@@ -199,24 +220,54 @@
 
             <input type="submit" value="submit">
 
-            
+
+          </form>
+        </div>
+      </div>
+
+
+      <div id="editServiceModal" class="modal">
+        <div class="modal-content">
+          <form id="editServiceForm">
+
+            <div>
+              <input style="display: none;" id="serviceID" type="text" name="id" disabled>
+
+            </div>
+
+
+            <div>
+              <label for="title">Service: </label>
+              <input type="text" id="editTitleService" name="title" required>
+            </div>
+            <div>
+              <label for="desccription">Description: </label>
+              <textarea id="editDescriptionService" name="desccription" required></textarea>
+            </div>
+            <div>
+              <label for="icon">Icon: </label>
+              <input type="text" id="editIconService" name="icon" required>
+            </div>
+
+            <input type="submit" value="submit">
+
           </form>
         </div>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 20px; padding: 20px;">
 
-      <div class="title-addContainer">
-        <h1 id="title_content_four">¿What are our services?</h1>
-        <button id="btnAddService" class="btnAdd" style="background: transparent; border: none; cursor: pointer;"><i
-            class="fa-solid fa-circle-plus"></i></button>
+        <div class="title-addContainer">
+          <h1 id="title_content_four">¿What are our services?</h1>
+          <button id="btnAddService" class="btnAdd" style="background: transparent; border: none; cursor: pointer;"><i
+              class="fa-solid fa-circle-plus"></i></button>
+        </div>
+
+        <div id="services_container">
+
+
+        </div>
       </div>
-
-      <div id="services_container">
-
-
-      </div>
-    </div>
       </div>
 
 
