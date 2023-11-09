@@ -5,6 +5,11 @@
 }
 
 
+#company_name{
+  transition: opacity 0.5s ease;
+}
+
+
 /* Estilos para el fondo oscuro detrás de la ventana emergente */
 .modal {
   display: none;
