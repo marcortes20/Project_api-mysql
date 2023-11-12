@@ -40,7 +40,7 @@ import { MenuOptionsModule } from './menu-options/menu-options.module';
 
       autoLoadEntities: true,
       synchronize: true,
-      logging: true,
+      //logging: true, // show sql in terminal
 
     }),
 
