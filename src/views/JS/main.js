@@ -5,20 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
   reload_page();
 
 
-
-//   let btn_reload = document.getElementById('reload');
-//   btn_reload.addEventListener("click", function(event) {
-//     // Evita que el enlace redireccione a la URL especificada en 'href'
-//     event.preventDefault();
-//     reload_page();
-// });
-  
   function reload_page() {
-    
+
     fetch('http://localhost:3000/Project/api/companies/1')
       .then((response) => response.json())
       .then((company) => {
-        console.log(company);
         load_header(company);
         load_main(company);
       })
@@ -29,6 +20,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const company_name = document.getElementById('company_name');
 
     company_name.textContent = header_information.company_name;
+  
+    //variables de la seccion 1 del main
+    const title_section_1 = document.getElementById('title_secction_1');
+    const paragraph = document.getElementById('paragraph_section_1');
+    const img_section_1 = document.getElementById('img_section_1');
+  
+    //cargar seccion 1 del main
+    title_section_1.textContent = header_information.company_title_description;
+    paragraph.textContent = header_information.company_description;
+    img_section_1.src = header_information.company_img_description;
 
     header_information.menuOptions.forEach(option => {
       // obtenemos cada uno de los enlaces del menú principal
@@ -44,82 +45,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
-  // function load_contact(contact_informacion) {
-  //   const title_contact = document.getElementById('contact_title');
-  //   const for_contact = document.getElementById('for_label');
-  //   const issue_label = document.getElementById('issue_label');
-  //   const message_label = document.getElementById('message_label');
-  //   const btn_send = document.getElementById('btn_send');
+  var products;
+  var currentIndex = 0;
 
-  //   title_contact.textContent = contact_informacion.contact_field.title;
-  //   for_contact.textContent = contact_informacion.contact_field.for;
-  //   issue_label.textContent = contact_informacion.contact_field.issues;
-  //   message_label.textContent = contact_informacion.contact_field.message;
-  //   btn_send.textContent = contact_informacion.contact_field.button_text;
+  function carouselEvent(productos) {
+    products = productos;
 
+    document.getElementById("righttButton").addEventListener("click", function () {
+      currentIndex = (currentIndex + 1) % products.length;
 
+      updateProductInfo(currentIndex);
+    });
 
-  // }
+    // Función para manejar el clic en el botón izquierdo
+    document.getElementById("leftButton").addEventListener("click", function () {
+      currentIndex = (currentIndex - 1 + products.length) % products.length;
+      updateProductInfo(currentIndex);
+    });
 
-  function load_main(main_information) {
+    updateProductInfo(0);
+  }
 
-    //variables de la seccion 1 del main
-    const title_section_1 = document.getElementById('title_secction_1');
-    const paragraph = document.getElementById('paragraph_section_1');
-    const img_section_1 = document.getElementById('img_section_1');
+  function updateProductInfo(index) {
 
-    //cargar seccion 1 del main
-    title_section_1.textContent = main_information.company_title_description;
-    paragraph.textContent = main_information.company_description;
-    img_section_1.src = main_information.company_img_description;
-
-
-
-    //variables de la seccion 2 del main
+    let product = products[index];
 
     const img = document.getElementById('picture-content_two');
     const discount = document.getElementById('content-discount');
     const description_product = document.getElementById('description_product');
     const price_product = document.getElementById('price_product');
     const size_product = document.getElementById('size_product');
+    const content_product = document.getElementById('content-product');
+
+    content_product.style.opacity = 0;
+
+    setTimeout(() => {
+
+      img.src = product.image;
+      discount.textContent = product.discount;
+      description_product.textContent = product.description;
+      price_product.textContent = product.price;
+      size_product.textContent = product.size;
+      content_product.style.opacity = 1;
+
+    }, 520);
 
 
-    //inicializar una imagen y sus campos por default
-    img.src = main_information.products[0].image;
-    discount.textContent = main_information.products[0].discount;
-    description_product.textContent = main_information.products[0].description;
-    price_product.textContent = main_information.products[0].price;
-    size_product.textContent = main_information.products[0].size;
+
+
+  }
 
 
 
-    main_information.products.forEach(option => {
-      // obtenemos cada uno de los enlaces de la lista de productos
+  function load_main(main_information) {
 
-      document.getElementById(`button_${option.id}`).addEventListener("click", () => {
-        // Cambia la opacidad de la imagen a 0 (invisible)
-        img.style.opacity = 0;
-        // Después de un breve retraso, cambia la imagen y restaura la opacidad
-        setTimeout(() => {
-
-          img.src = option.image; // Cambia la imagen
-          discount.textContent = option.discount;
-          img.style.opacity = 1; // Restaura la opacidad
-          description_product.textContent = option.description;
-          price_product.textContent = option.price;
-          size_product.textContent = option.size;
-
-        }, 500);
-      });
-
-    });
+    carouselEvent(main_information.products);
 
 
-    //variables de la seccion 3
-    //cargando seccion 3
 
     main_information.categories.forEach(option => {
-      
+
       let categories_container = document.getElementById('cat_container');
 
       let new_category = document.createElement("img");
@@ -127,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function () {
       new_category.src = option.img;
 
       new_category.classList.add("transicion-category");
-      
+
       categories_container.appendChild(new_category);
-      
+
     });
 
 
@@ -154,10 +139,10 @@ document.addEventListener('DOMContentLoaded', function () {
       img_service.src = option.icon;
 
 
-      
 
 
-      
+
+
 
       let service_title = document.createElement('h3')
       let service_description = document.createElement('p');

@@ -1,14 +1,14 @@
-* {
+/*Estilos para todo el header*/
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
+/*Transición del titulo*/
 #company_name{
   transition: opacity 0.5s ease;
 }
-
 
 /* Estilos para el fondo oscuro detrás de la ventana emergente */
 .modal {
@@ -23,16 +23,57 @@
   overflow: auto;
 }
 
-/* Estilos para el contenido de la ventana emergente */
+/*Estilos para el contenido de los forms*/
 .modal-content {
   background-color: #fff;
-  max-width: 400px;
+  max-width: 600px;
   margin: 100px auto;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
 }
+
+/*Estilos para los formularios -texto*/
+#editServiceForm {
+  text-align: left;
+}
+
+/*Estilos de los forms -forma*/
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/*Estilos de los forms -forma*/
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/*Estilos de los forms -boton*/
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/*Estilos de los forms -cambio de color*/
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
 
 /* Estilos para el botón de cierre (la "x") */
 .close {
@@ -48,23 +89,26 @@
   text-align: left;
 }
 
+/*Estilos de los forms de contacto*/
 #emailForm label {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
 }
 
+
 .modal-content h2{
   text-align:  center;
 }
 
+/*Estilos de los botones*/
 .btn_container{
   width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
 
-
+/*Generaliza los estilos para los tres tipos de input*/
 #emailForm input[type="email"],
 #emailForm input[type="text"],
 #emailForm textarea {
@@ -76,6 +120,7 @@
   font-size: 16px;
 }
 
+/*Boton del form de contacto*/
 #emailForm button[type="submit"] {
   background-color: #007bff;
   color: #fff;
@@ -86,6 +131,7 @@
   cursor: pointer;
 }
 
+/*cambia de color con el pulsor*/
 #emailForm button[type="submit"]:hover {
   background-color: #0056b3;
 }
@@ -111,36 +157,34 @@
   z-index: 100;
   /* Asegura que el encabezado esté en la parte superior de otros elementos */
 }
-
-
-
+/*Estilos de forma para los menus*/
 .nav-options {
   display: flex;
   gap: 30px;
 }
-
+/*Estilos para el primer menú*/
 .first-menu-options {
   list-style-type: none;
   display: flex;
   gap: 30px;
 }
-
+/*Estilos para el primer menú de imagen*/
 .first-menu-options a {
   text-decoration: none;
   color: #050505;
   transition: color 0.2s;
 }
-
+/*Hace que cambie de color con el pulsor*/
 .first-menu-options a:hover {
   color: #0056b3;
 }
-
+/*Menú de los iconos*/
 .second-menu-options {
   list-style-type: none;
   display: flex;
   gap: 5px;
 }
-
+/*Cambia de tamaño cuando lapantalla pasa de los 500px*/
 @media (max-width: 500px)
 {
   .navigation-menu{

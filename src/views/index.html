@@ -7,9 +7,11 @@
   <link rel="stylesheet" href="../CSS/index_styles/main_styles.css">
   <link rel="stylesheet" href="../CSS/index_styles/header_styles.css">
   <link rel="stylesheet" href="../CSS/index_styles/footer_styles.css">
+  <script src="https://kit.fontawesome.com/910f16346a.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/910f16346a.js" crossorigin="anonymous"></script>
 
   <title>My landing page</title>
 </head>
@@ -110,25 +112,32 @@
             </div>
 
           </div>
-          <img id="picture-content_two" src="" alt="">
+
+
+          <div id="carousel">
+
+
+            <button id="leftButton" style="background-color: transparent; border: none;"><i class="fa-sharp fa-solid fa-angles-left fa-beat fa-2xl" style="color: #05006f;"></i></button>
+
+
+            <img id="picture-content_two" src="" alt="">
+
+            <button id="righttButton" style="background-color: transparent; border: none;"><i class="fa-sharp fa-solid fa-angles-right fa-beat fa-2xl" style="color: #05006f;"></i></button>
+
+          </div>
 
           <div id="content-information-picture-one">
             <div id="text-1">
-              <p><b id="description_product"></b><br></p>
-              <p id="price_product"></p>
-              <p><b id="size_product"></b></p>
+              <p>Description: <b id="description_product"></b><br></p>
+              <p>Price: <b id="price_product"></b></p>
+              <p>Size: <b id="size_product"></b></p>
             </div>
             <div id="content-more" style="font-size: 25px;"><b>+</b></div>
           </div>
 
         </div>
 
-        <div class="clothes-buttons" id="buttons">
-          <button id="button_1" type="button"></button>
-          <button id="button_2" type="button"></button>
-          <button id="button_3" type="button"></button>
-          <button id="button_4" type="button"></button>
-        </div>
+        
 
       </div>
 
@@ -202,9 +211,12 @@
     </div>
 
     <div id="list_4" class="logos">
-      <img id="footer_ico_1" class="instagram-logo" src="../Assets/instagram.svg" alt="Gucci Logo">
-      <img id="footer_ico_2" class="facebook-logo" src="../Assets/brand-facebook-filled.svg" alt="Gucci Logo">
-      <img id="footer_ico_3" class="twiter-logo" src="../Assets/brand-twitter-filled.svg" alt="Gucci Logo">
+      <button id="btnInstagram" class="btnredes" style="background: transparent; border: none; cursor: pointer;">
+        <i class="fa-brands fa-instagram"></i></button>
+      <button id="btnInstagram" class="btnredes" style="background: transparent; border: none; cursor: pointer;">
+        <i class="fa-brands fa-facebook"></i></button>
+      <button id="btnInstagram" class="btnredes" style="background: transparent; border: none; cursor: pointer;">
+        <i class="fa-brands fa-twitter"></i></button>
     </div>
 
   </footer>
