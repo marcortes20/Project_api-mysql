@@ -3,22 +3,10 @@ body {
   flex-direction: column;
 }
 
-h1,
-h2,
-h3 {
+*{
   font-family: 'Nunito Sans', sans-serif;
 }
 
-
-
-p,
-b {
-  font-family: 'Zilla Slab', serif;
-}
-
-#content-product{
-  transition: opacity 0.5s ease;
-  }
 .main {
   margin-top: 60px;
   padding-left: 0px;

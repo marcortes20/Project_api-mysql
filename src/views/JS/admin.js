@@ -1,8 +1,3 @@
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
   redirections();
   contact_window_bahavior();

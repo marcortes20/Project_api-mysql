@@ -1,3 +1,4 @@
+/*Aplica estilos a todo el footer*/
 .footer {
   margin: 0;
   padding: 0;
@@ -7,41 +8,55 @@
   justify-content: space-around;
 }
 
+/*Estilos para los titulos h3*/
 .footer-info h3 {
   color: white;
   margin-bottom: 20px;
 }
+/*Estilos de forma*/
 .footer-info ul{
   list-style: none;
   padding: 0;
 }
 
+/*Estilos al texto*/
 .footer-info ul li {
   color: rgb(183, 178, 178);
   margin-bottom: 10px;
 }
 
+/*Estilos al texto*/
 .footer-info ul li a{
   text-decoration: none;
   color: rgb(183, 178, 178);
   transition: color 0.3s;
 }
 
+/*Cambia de color con el pulsor*/
 .footer-info ul li a:hover{
   color: #007bff;
 }
 
+/*Estilos para los textos*/
 .footer-info p {
   color: rgb(183, 178, 178);
   margin-bottom: 10px;
 }
 
+/*Estilos para el alineado de logos*/
 .logos {
   display: flex;
   flex-direction: row;
   gap: 15px;
 }
 
+/*Iconos*/
 .logos img {
   height: 35px;
+}
+
+/*Colores de los iconos*/
+.btnredes{
+  color: white; 
+  font-size: 35px;
 }

@@ -1,39 +1,14 @@
+/*Estilos para la sección del body*/
 body {
   display: flex;
   flex-direction: column;
 }
-
-h1,
-h2,
-h3 {
+/*Tipografia de la letra*/
+*{
   font-family: 'Nunito Sans', sans-serif;
 }
 
-p,
-b {
-  font-family: 'Zilla Slab', serif;
-}
-
-.main {
-  margin-top: 60px;
-  padding-left: 0px;
-  padding-right: 0px;
-  flex: 1;
-}
-
-.header-title{
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.content_one {
-  background-color: white;
-  display: flex;
-  padding: 20px 100px;
-  gap: 10%;
-}
-
+/*Estilos para los botones de categoria - editar y eliminar*/
 .edit_delete_container_cat button {
   height: 36px;
   border-radius: 3px;
@@ -41,7 +16,7 @@ b {
   border: none;
   cursor: pointer;
 }
-
+/*Estilos para los botones de servicios - editar y eliminar*/
 .edit_delete_container_serv button {
   height: 36px;
   border-radius: 3px;
@@ -49,34 +24,54 @@ b {
   border: none;
   cursor: pointer;
 }
-
+/*Estilos para los botones de editar y eliminar*/
 .edit_delete_container_serv, .edit_delete_container_cat{
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
+/*Color de el boton de eliminar*/
 .btnDelete i{
-  color: red; /* Color del icono */
+  color: red; 
   font-size: 25px;
 }
-
+/*Color de el boton de editar*/
 .btnEdit i{
   color: blue;
   font-size: 25px;
 }
+/*Boton de agregar*/
 #btnEditCompany i{
   font-size: 35px;
 }
+/*color del boton agregar*/
 .btnAdd i {
-  color: green;
+  color: black;
   font-size: 40px;
 }
 
-
-
-
-
+/*estilos de forma para todo el main*/
+.main {
+  margin-top: 60px;
+  padding-left: 0px;
+  padding-right: 0px;
+  flex: 1;
+}
+/*Estilos nombre de la pagina*/
+.header-title{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+/*Estilos sección de descripción de la empresa*/
+.content_one {
+  background-color: white;
+  display: flex;
+  padding: 20px 100px;
+  gap: 10%;
+}
+/*Estilos para la sección de descripción (información)*/
 .content_one_information {
   display: flex;
   flex-direction: column;
@@ -84,27 +79,17 @@ b {
   text-align: center;
   justify-content: center;
 }
-
+/*Estilos para la sección de descripción (foto)*/
 .content_one_picture {
   display: flex;
   justify-content: center;
 }
 
-
+/*estilos especificos del la foto*/
 .picture_one {
   width: 450px;
   border-radius: 5px;
 }
-
-#content-product{
-transition: opacity 0.5s ease;
-}
-.edit-delete-products-container{
-  display: flex;
-  gap: 10px;
-}
-
-
 
 .content-two {
   padding: 20px;
@@ -113,14 +98,14 @@ transition: opacity 0.5s ease;
   display: flex;
   justify-content: center;
 }
-
+/*Estilosa generales para el contenido de la sección 2*/
 .content_two_information {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-
+/*Estilos del carrusel*/
 #carousel {
   display: flex;
   align-items: center;
@@ -128,6 +113,7 @@ transition: opacity 0.5s ease;
 
 }
 
+/*Estilos de las transiciones de esta sección*/
 #leftButton,
 #righttButton {
   cursor: pointer;
@@ -135,13 +121,12 @@ transition: opacity 0.5s ease;
   user-select: none;
 }
 
-
+/*Estilos para el contenido de la sección de productos*/
 #content-product {
   background-color: white;
   border-radius: 10px;
   width: 500px;
   height: auto;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -149,6 +134,7 @@ transition: opacity 0.5s ease;
   gap: 15px;
 }
 
+/*Estilos especificos para el descuento*/
 #content-discount {
   margin-top: 15px;
   border-radius: 50%;
@@ -159,18 +145,16 @@ transition: opacity 0.5s ease;
   align-items: center;
   display: flex;
   justify-content: center;
-
-
 }
 
+/*Estilos para las imagenes de esta sección*/
 #picture-content_two {
-
   transition: opacity 0.5s;
-
   width: 400px;
   height: 400px;
 }
 
+/*Estilos para el texto de las imagenes*/
 #content-information-picture-one {
   width: 400px;
   display: flex;
@@ -179,10 +163,12 @@ transition: opacity 0.5s ease;
   margin-bottom: 15px;
 }
 
+/*estilos para el texto*/
 #text-1 {
   text-align: left;
 }
 
+/*estilos para el + de esta sección*/
 #content-more {
   background-color: #050505;
   height: 50px;
@@ -193,7 +179,15 @@ transition: opacity 0.5s ease;
   justify-content: center;
   align-items: center;
 }
+/*Estilos para el descuento*/
+.discount_field {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
+/*Estilos para los botones*/
 #buttons {
   display: flex;
   flex-direction: row;
@@ -206,59 +200,45 @@ transition: opacity 0.5s ease;
   padding-top: 50px;
 }
 
+/*Estilos para el contenedor de colección*/
 .container {
   display: flex;
   margin: auto;
   padding: 20px;
   width: 60%;
   height: 600px;
-
 }
 
-.title-addContainer, .title-content-2{
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
 }
 
-
+/*Estilos para las imagenes*/
 .container img {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 0px;
   flex-grow: 1;
-  object-fit: cover;
-  /*se ajusta al tamaño del contenedor*/
-  opacity: .8;
-  transition: .7s ease;
+  object-fit: cover;/*Se ajusta al tamaño del contenedor*/
+  opacity: .8; /*Opacidad de la imagen*/
+  transition: .7s ease; /*Transición*/
   margin-right: 25px;
 }
-
+/*Aclara la imagen*/
 .container img:hover {
   cursor: crosshair;
   opacity: 1;
-
 }
 
-.discount_field {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
+/*Opacidad de los botones e imagenes de la sección de categoria*/
+.categories, .edit_delete_container_cat, .content_one, .service{
+  transition: opacity 1s ease;
 }
 
-
-
-#title_content_three {
-  text-align: center;
-}
-
-
-
-
+/*Estilos para la sección de servicios*/
 .content-four {
   background-color: #FCE1D3;
   display: flex;
@@ -266,18 +246,18 @@ transition: opacity 0.5s ease;
   text-align: start;
 
 }
-
+/*Imagen sección de servicios*/
 .content_four_picture {
   margin-left: 20px;
 }
-
+/*Estilos de posición de la imagen*/
 #picture_content_four {
   width: 350px;
   border-radius: 20px;
   padding: 10px;
   margin-left: 150px;
 }
-
+/*Estilos del contenerdor de los servicios*/
 #services_container {
   display: flex;
   flex-direction: column;
@@ -288,20 +268,16 @@ transition: opacity 0.5s ease;
 }
 
 
-.categories, .edit_delete_container_cat, .content_one, .service{
-  transition: opacity 1s ease;
-}
 
-
+/*Iconos de los servicos*/
 .service_icons {
   width: 70px;
   height: 70px;
   border-radius: 50px;
 }
 
-
+/*Estilos de los servicios de forma*/
 .service {
-
   display: flex;
   gap: 40px;
 }
