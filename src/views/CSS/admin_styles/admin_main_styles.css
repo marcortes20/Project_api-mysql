@@ -90,7 +90,7 @@ body {
   width: 450px;
   border-radius: 5px;
 }
-/*Estilos sección de productos*/
+
 .content-two {
   padding: 20px;
   background-color: #e4e3d2;
@@ -195,25 +195,7 @@ body {
   gap: 25px;
   margin-bottom: 20px;
 }
-/*Estilos para los botones*/
-.clothes-buttons button {
-  border-radius: 50%;
-  background-color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  transition: background-color 0.5s ease;
-}
-/*Cambia de color con el pulsor*/
-.clothes-buttons button:hover {
-  background-color: #050505;
-}
 
-/*Titulo sección de coleeción*/
-#title_content_three {
-  text-align: center;
-}
-/*Estilos sección de colección*/
 .content-three {
   padding-top: 50px;
 }
@@ -226,8 +208,7 @@ body {
   width: 60%;
   height: 600px;
 }
-/*Estilos para el titulo*/
-.title-addContainer{
+
   display: flex;
   gap: 10px;
   justify-content: center;

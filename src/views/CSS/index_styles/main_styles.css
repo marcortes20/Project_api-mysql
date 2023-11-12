@@ -34,6 +34,12 @@ body {
   flex-direction: column;
   gap: 5px;
 }
+#carousel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
 
 .category_delete i{
   color: red; /* Color del icono */
@@ -166,19 +172,6 @@ i{
   margin-bottom: 20px;
 }
 
-.clothes-buttons button {
-  border-radius: 50%;
-  background-color: white;
-  border: none;
-  width: 50px;
-  height: 50px;
-  transition: background-color 0.5s ease;
-
-}
-
-.clothes-buttons button:hover {
-  background-color: #050505;
-}
 
 .content-three {
   padding-top: 50px;

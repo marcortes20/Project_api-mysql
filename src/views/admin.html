@@ -55,7 +55,8 @@
 
       <div class="header-title">
         <h1 id="company_name" style="font-size: 45px;"></h1>
-        <button id="btnEditNameCompany" class="btnEdit" style="background: transparent; border: none; cursor: pointer;"><i
+        <button id="btnEditNameCompany" class="btnEdit"
+          style="background: transparent; border: none; cursor: pointer;"><i
             class="fa-solid fa-pen-to-square"></i></button>
       </div>
 
@@ -91,23 +92,23 @@
         <div class="modal-content">
           <form id="editCompanyForm">
             <div>
-              
+
               <label for="companyTitle">Company Title:</label>
               <input type="text" id="companyTitle" name="companyTitle" required>
-              
+
             </div>
 
             <div>
 
               <label for="companyDescription">Company description:</label>
               <textarea name="companyDescription" id="companyDescription" cols="50" rows="10" required></textarea>
-              
+
             </div>
             <div>
 
               <label for="companyImage">Company Image:</label>
               <input type="text" id="companyImage" name="companyImage" required>
-              
+
             </div>
 
             <div>
@@ -119,7 +120,7 @@
       </div>
 
       <button id="btnEditCompany" class="btnEdit" style="background: transparent; border: none; cursor: pointer;"><i
-        class="fa-solid fa-pen-to-square"></i></button>
+          class="fa-solid fa-pen-to-square"></i></button>
       <div class="content_one_information">
 
         <h2 id="title_secction_1"></h2>
@@ -138,14 +139,58 @@
 
     <section class="content-two" id="products">
 
+      <div id="editProductModal" class="modal">
+        <div class="modal-content">
+          <form id="editProductForm">
+
+            <div>
+              <label for="description">Description:</label>
+              <input id="newDescriptionProduct" type="text" name="description">
+            </div>
+
+            <div>
+              <label for="image">Image:</label>
+              <input type="text" id="newImageProduct" name="image" required>
+            </div>
+
+            <div>
+              <label for="discount">Discount:</label>
+              <input type="text" id="newDiscountProduct" name="discount" required>
+            </div>
+
+            <div>
+              <label for="price">Price:</label>
+              <input type="text" id="newPriceProduct" name="price" required>
+            </div>
+            <div>
+              <label for="size">Size:</label>
+              <input type="text" id="newSizeProduct" name="size" required>
+            </div>
+
+            <input type="submit" value="submit">
+
+          </form>
+        </div>
+      </div>
+
       <div class="content_two_information">
 
-        <h2 id="title_section_2">NEW COLLECTION</h2>
+        <div class="title-content-2">
+          <h2 id="title_section_2">NEW COLLECTION</h2>
+          <button id="btnAddProduct" class="btnAdd" style="background: transparent; border: none; cursor: pointer;"><i
+            class="fa-solid fa-circle-plus"></i></button>
+        </div>
+
 
         <div id="content-product">
 
 
           <div class="discount_field">
+
+            <div class="edit-delete-products-container">
+              <button id="btnDeleteProduct" class="btnDelete" style="background-color: transparent; border: none; cursor: pointer;"><i class="fa-solid fa-trash"></i></button>
+              <button id="btnEditProduct" class="btnEdit" style="background-color: transparent; border: none; cursor: pointer;"><i class="fa-solid fa-pen-to-square"></i></button>
+            </div>
 
             <div>
               <p><b style="font-size:20px ;">Take off</b></p>
@@ -160,15 +205,16 @@
           <div id="carousel">
 
 
+            <button id="leftButton" style="background-color: transparent; border: none;"><i class="fa-sharp fa-solid fa-angles-left fa-beat fa-2xl" style="color: #05006f;"></i></button>
 
-            <img id="leftButton" src="../Assets/arrow-left.svg" alt="">
 
             <img id="picture-content_two" src="" alt="">
 
-            <img id="righttButton" src="../Assets/arrow-right.svg" alt="">
-
+            <button id="righttButton" style="background-color: transparent; border: none;"><i class="fa-sharp fa-solid fa-angles-right fa-beat fa-2xl" style="color: #05006f;"></i></button>
 
           </div>
+
+
           <div id="content-information-picture-one">
             <div id="text-1">
               <p><b id="description_product"></b><br></p>
@@ -178,13 +224,6 @@
             <div id="content-more" style="font-size: 25px;"><b>+</b></div>
           </div>
 
-        </div>
-
-        <div class="clothes-buttons" id="buttons">
-          <button id="button_1" type="button"></button>
-          <button id="button_2" type="button"></button>
-          <button id="button_3" type="button"></button>
-          <button id="button_4" type="button"></button>
         </div>
 
       </div>
@@ -202,8 +241,7 @@
             </div>
 
             <div>
-              <label for="img">Image URL:</label>
-            <input type="text" id="editCategoryImg" name="img" required>
+
             </div>
 
 
@@ -225,7 +263,6 @@
           </form>
         </div>
       </div>
-
       <div class="title-addContainer">
         <h2 id="title_content_three">CATEGORIES</h2>
         <button id="btnAddCategory" class="btnAdd" style="background: transparent; border: none; cursor: pointer;"><i
