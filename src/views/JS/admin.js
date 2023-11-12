@@ -444,6 +444,16 @@ function formsBehaviors() {
 
 
 
+  // EVENTS TO THE SAVE  PRODUCT FORM
+  const addProductModal = document.getElementById("addProductModal");
+  window.addEventListener('click', (event) => {
+    if (event.target == addProductModal) {
+      addProductModal.style.display = 'none';
+    }
+  });
+
+
+
   // EVENTS TO THE EDIT PRODUCT FORM
   const editProductModal = document.getElementById("editProductModal");
   window.addEventListener('click', (event) => {
@@ -509,11 +519,54 @@ function formsBehaviors() {
 // forms to edit en add new sections at time to submit forrm
 function submitForsmEvents() {
 
+  //EVENTS TO SUBMIT ADD PRODUCT  FORM
+  const addProductModal = document.getElementById("addProductModal");
+  const addProductForm = document.getElementById("addProductForm");
+  const content_product = document.getElementById("content-product");
+
+  addProductForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const DescriptionProduct = document.getElementById("DescriptionProduct");
+    const ImageProduct = document.getElementById("ImageProduct");
+    const DiscountProduct = document.getElementById("DiscountProduct");
+    const PriceProduct = document.getElementById("PriceProduct");
+    const SizeProduct = document.getElementById("SizeProduct");
+
+    fetch('http://localhost:3000/Project/api/products', {
+      method: 'POST',
+      body: JSON.stringify({
+        description: DescriptionProduct.value,
+        image: ImageProduct.value,
+        discount: DiscountProduct.value,
+        price: PriceProduct.value,
+        size: SizeProduct.value,
+        company_id: 1,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      addProductForm.reset();
+      addProductModal.style.display = "none";
+      content_product.style.opacity = 0;
+      setTimeout(() => {
+        
+        reloadProducts();
+        content_product.style.opacity = 1;
+      }, 520);
+    })
+
+  });
+
+
+
 
     //EVENTS TO SUBMIT EDIT PRODUCT FORM
     const editProductModal = document.getElementById("editProductModal");
     const editProductForm = document.getElementById("editProductForm");
-    const content_product = document.getElementById("content-product");
   
     editProductForm.addEventListener("submit", (event) => {
 
@@ -542,7 +595,7 @@ function submitForsmEvents() {
     })
       .then((response) => response.json())
       .then((json) => {
-        editServiceForm.reset();
+        editProductForm.reset();
         editProductModal.style.display = "none";
         content_product.style.opacity = 0;
         setTimeout(() => {
@@ -845,6 +898,7 @@ function addEventButtons() {
   });
 
 
+
   document.getElementById("righttButton").addEventListener("click", function () {
     currentIndex = (currentIndex + 1) % products.length;
 
@@ -883,7 +937,11 @@ function addEventButtons() {
 
     addServiceModal.style.display = "block";
   });
-
+  
+  const btnAddProduct = document.getElementById("btnAddProduct").addEventListener("click", () => {
+    const addProductModal = document.getElementById("addProductModal");
+    addProductModal.style.display = "block";
+  });
 
 
   const btnEditNameCompany = document.getElementById("btnEditNameCompany").addEventListener("click", () => {
