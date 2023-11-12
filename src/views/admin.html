@@ -139,6 +139,40 @@
 
     <section class="content-two" id="products">
 
+      <div id="editProductModal" class="modal">
+        <div class="modal-content">
+          <form id="editProductForm">
+
+            <div>
+              <label for="description">Description:</label>
+              <input id="newDescriptionProduct" type="text" name="description">
+            </div>
+
+            <div>
+              <label for="image">Image:</label>
+              <input type="text" id="newImageProduct" name="image" required>
+            </div>
+
+            <div>
+              <label for="discount">Discount:</label>
+              <input type="text" id="newDiscountProduct" name="discount" required>
+            </div>
+
+            <div>
+              <label for="price">Price:</label>
+              <input type="text" id="newPriceProduct" name="price" required>
+            </div>
+            <div>
+              <label for="size">Size:</label>
+              <input type="text" id="newSizeProduct" name="size" required>
+            </div>
+
+            <input type="submit" value="submit">
+
+          </form>
+        </div>
+      </div>
+
       <div class="content_two_information">
 
         <div class="title-content-2">
@@ -155,7 +189,7 @@
 
             <div class="edit-delete-products-container">
               <button id="btnDeleteProduct" class="btnDelete" style="background-color: transparent; border: none; cursor: pointer;"><i class="fa-solid fa-trash"></i></button>
-              <button class="btnEdit" style="background-color: transparent; border: none; cursor: pointer;"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button id="btnEditProduct" class="btnEdit" style="background-color: transparent; border: none; cursor: pointer;"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
 
             <div>

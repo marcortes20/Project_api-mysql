@@ -53,24 +53,9 @@ export class ProductsService {
       throw new BadRequestException('Product not found');
     }
 
-    let company;
-
-    if (updateProductDto.company_id) {
-
-      company = await this.company_Repo.findOneBy({ id: updateProductDto.company_id });
-
-    }
-
-    if (!company) {
-
-      throw new BadRequestException('Company not found');
-    }
-
     return await this.productRepository.save({
       ...product,
       ...updateProductDto,
-      company
-
     })
 
   }

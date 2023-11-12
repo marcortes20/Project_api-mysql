@@ -93,6 +93,7 @@ var currentIndex = 0;
 // update producst secction according produc's index in array products
 function updateProductInfo(index) {
 
+  const editProductModal = document.getElementById("editProductModal");
   let product = products[index];
 
   const img = document.getElementById('picture-content_two');
@@ -107,6 +108,8 @@ function updateProductInfo(index) {
     description_product.textContent = product.description;
     price_product.textContent = product.price;
     size_product.textContent = product.size;
+
+    editProductModal.style.opacity = 1;
 
 }
 
@@ -124,6 +127,7 @@ function reloadProducts() {
 
   //cleann array products 
   products = [];
+  currentIndex = 0;
   fetch('http://localhost:3000/Project/api/products')
     .then((response) => response.json())
     .then((db_products) => {
@@ -444,6 +448,16 @@ function clearServices() {
 function formsBehaviors() {
 
 
+
+  // EVENTS TO THE EDIT PRODUCT FORM
+  const editProductModal = document.getElementById("editProductModal");
+  window.addEventListener('click', (event) => {
+    if (event.target == editProductModal) {
+      editProductModal.style.display = 'none';
+    }
+  });
+
+
   // EVENTS TO THE ADD CATEGORY FORM
   const addCategoryModal = document.getElementById("addCategoryModal");
   window.addEventListener('click', (event) => {
@@ -501,12 +515,59 @@ function formsBehaviors() {
 function submitForsmEvents() {
 
 
+    //EVENTS TO SUBMIT EDIT PRODUCT FORM
+    const editProductModal = document.getElementById("editProductModal");
+    const editProductForm = document.getElementById("editProductForm");
+    const content_product = document.getElementById("content-product");
+  
+    editProductForm.addEventListener("submit", (event) => {
+
+      event.preventDefault();
+
+      const newDescriptionProduct = document.getElementById("newDescriptionProduct");
+      const newImageProduct = document.getElementById("newImageProduct");
+      const newDiscountProduct = document.getElementById("newDiscountProduct");
+      const newPriceProduct = document.getElementById("newPriceProduct");
+      const newSizeProduct = document.getElementById("newSizeProduct");
+      
+
+      fetch(`http://localhost:3000/Project/api/products/${products[currentIndex].id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+
+        description: newDescriptionProduct.value,
+        image: newImageProduct.value,
+        discount: newDiscountProduct.value,
+        price: newPriceProduct.value,
+        size: newSizeProduct.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        editServiceForm.reset();
+        editProductModal.style.display = "none";
+        content_product.style.opacity = 0;
+        setTimeout(() => {
+          
+          reloadProducts();
+          content_product.style.opacity = 1;
+        }, 520);
+      })
+  
+    });
+
+
+
+
+
   //EVENTS TO SUBMIT ADD CATEGORY FORM
   const addCategoryModal = document.getElementById("addCategoryModal");
   const formCategory = document.getElementById("addCategoryForm");
 
   formCategory.addEventListener("submit", (event) => {
-    console.log("entra");
     event.preventDefault();
     const image = document.getElementById("categoryImg").value;
     fetch('http://localhost:3000/Project/api/categories', {
@@ -744,8 +805,48 @@ function addEventButtons() {
     addCategoryModal.style.display = "block";
   });
 
+
+
   const btnDeleteProduct = document.getElementById("btnDeleteProduct").addEventListener("click", () => {
-    delete_product(products[currentIndex].id);
+
+    const confirmDelete = confirm("Are you sure you want to delete this product? ");
+
+    if(confirmDelete){
+
+      delete_product(products[currentIndex].id);
+
+    }
+  });
+
+
+
+  const btnEditProduct = document.getElementById("btnEditProduct").addEventListener("click", () => {
+
+    const editProductModal = document.getElementById("editProductModal");
+
+    const img = document.getElementById('picture-content_two');
+    const discount = document.getElementById('content-discount');
+    const description_product = document.getElementById('description_product');
+    const price_product = document.getElementById('price_product');
+    const size_product = document.getElementById('size_product');
+    
+    const newDescriptionProduct = document.getElementById("newDescriptionProduct");
+    const newImageProduct = document.getElementById("newImageProduct");
+    const newDiscountProduct = document.getElementById("newDiscountProduct");
+    const newPriceProduct = document.getElementById("newPriceProduct");
+    const newSizeProduct = document.getElementById("newSizeProduct");
+
+    newDescriptionProduct.value = description_product.textContent;
+
+    newImageProduct.value = img.src;
+
+    newDiscountProduct.value = discount.textContent;
+    
+    newPriceProduct.value = price_product.textContent;
+    
+    newSizeProduct.value = size_product.textContent;
+
+    editProductModal.style.display = "block";
   });
 
 
