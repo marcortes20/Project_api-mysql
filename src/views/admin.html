@@ -137,7 +137,46 @@
 
     </section>
 
+    <div id="addProductModal" class="modal">
+      <div class="modal-content">
+        <form id="addProductForm">
+
+          <div>
+            <label for="adddescription">Description:</label>
+            <input id="DescriptionProduct" type="text" name="adddescription">
+          </div>
+
+          <div>
+            <label for="addimage">Image:</label>
+            <input type="text" id="ImageProduct" name="addimage" required>
+          </div>
+
+          <div>
+            <label for="adddiscount">Discount:</label>
+            <input type="text" id="DiscountProduct" name="adddiscount" required>
+          </div>
+
+          <div>
+            <label for="addprice">Price:</label>
+            <input type="text" id="PriceProduct" name="addprice" required>
+          </div>
+          <div>
+            <label for="addsize">Sizew:</label>
+            <input type="text" id="SizeProduct" name="addsize" required>
+          </div>
+
+          <input type="submit" value="submit">
+
+        </form>
+      </div>
+    </div>
     <section class="content-two" id="products">
+
+
+
+
+
+
 
       <div id="editProductModal" class="modal">
         <div class="modal-content">
@@ -217,9 +256,9 @@
 
           <div id="content-information-picture-one">
             <div id="text-1">
-              <p><b id="description_product"></b><br></p>
-              <p id="price_product"></p>
-              <p><b id="size_product"></b></p>
+              <p>Description: <b id="description_product"></b><br></p>
+              <p>Price: <b id="price_product"></b></p>
+              <p>Size: <b id="size_product"></b></p>
             </div>
             <div id="content-more" style="font-size: 25px;"><b>+</b></div>
           </div>
@@ -241,11 +280,12 @@
             </div>
 
             <div>
-
+              <label for="img">Image url:</label>
+              <input type="text" id="editCategoryImg" name="img" required>
             </div>
 
 
-            <input type="submit" value="Edith Category">
+            <input type="submit" value="Edit Category">
 
           </form>
         </div>
