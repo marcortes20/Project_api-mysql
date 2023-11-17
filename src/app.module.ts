@@ -9,8 +9,6 @@ import { CategoriesModule } from './categories/categories.module';
 
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { MenuOptionsModule } from './menu-options/menu-options.module';
-
 
 @Module({
   imports: [
@@ -22,8 +20,6 @@ import { MenuOptionsModule } from './menu-options/menu-options.module';
     ServicesModule,
 
     CategoriesModule,
-
-    MenuOptionsModule,
 
     //npm install --save @nestjs/serve-static
     ServeStaticModule.forRoot({

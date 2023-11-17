@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then((company) => {
         load_header(company);
         load_main(company);
+        EventsButtonsCarousel();
       })
   }
 
@@ -20,22 +21,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const company_name = document.getElementById('company_name');
 
     company_name.textContent = header_information.company_name;
-  
+
     //variables de la seccion 1 del main
     const title_section_1 = document.getElementById('title_secction_1');
     const paragraph = document.getElementById('paragraph_section_1');
     const img_section_1 = document.getElementById('img_section_1');
-  
+
     //cargar seccion 1 del main
     title_section_1.textContent = header_information.company_title_description;
     paragraph.textContent = header_information.company_description;
     img_section_1.src = header_information.company_img_description;
 
-    header_information.menuOptions.forEach(option => {
-      // obtenemos cada uno de los enlaces del menú principal
-      document.getElementById(`menu_option_${option.id}`).textContent = option.name;
+    // header_information.menuOptions.forEach(option => {
+    //   // obtenemos cada uno de los enlaces del menú principal
+    //   document.getElementById(`menu_option_${option.id}`).textContent = option.name;
 
-    });
+    // });
 
     // header_information.icons_header.forEach(option => {
     //   // obtenemos cada uno de los iconos del menú principal
@@ -45,26 +46,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
-  var products;
+  var products = [];
   var currentIndex = 0;
 
-  function carouselEvent(productos) {
-    products = productos;
 
+
+
+  function EventsButtonsCarousel() {
     document.getElementById("righttButton").addEventListener("click", function () {
-      currentIndex = (currentIndex + 1) % products.length;
 
-      updateProductInfo(currentIndex);
+      if (products.length != 0) {
+
+        currentIndex = (currentIndex + 1) % products.length;
+
+        const content_product = document.getElementById("content-product")
+
+        content_product.style.opacity = 0;
+
+        setTimeout(() => {
+          content_product.style.opacity = 1;
+          updateProductInfo(currentIndex);
+
+        }, 500);
+
+      }
     });
 
     // Función para manejar el clic en el botón izquierdo
     document.getElementById("leftButton").addEventListener("click", function () {
-      currentIndex = (currentIndex - 1 + products.length) % products.length;
-      updateProductInfo(currentIndex);
-    });
 
-    updateProductInfo(0);
+      if (products.length != 0) {
+
+        currentIndex = (currentIndex - 1 + products.length) % products.length;
+        const content_product = document.getElementById("content-product")
+
+        content_product.style.opacity = 0;
+
+        setTimeout(() => {
+          updateProductInfo(currentIndex);
+          content_product.style.opacity = 1;
+          updateProductInfo(currentIndex);
+
+        }, 500);
+
+      }
+    });
   }
+
 
   function updateProductInfo(index) {
 
@@ -99,7 +127,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function load_main(main_information) {
 
-    carouselEvent(main_information.products);
+    currentIndex = 0;
+    products = main_information.products;
+
+    if (products.length != 0) {
+      updateProductInfo(0);
+    }
 
 
 
