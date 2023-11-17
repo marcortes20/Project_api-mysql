@@ -22,7 +22,6 @@ export class CompaniesService {
       .leftJoinAndSelect('company.products', 'products')
       .leftJoinAndSelect('company.categories', 'categories')
       .leftJoinAndSelect('company.services', 'services')
-      .leftJoinAndSelect('company.menuOptions', 'menuOptions')
       .getOne();
   }
   
@@ -37,7 +36,7 @@ export class CompaniesService {
   }
 
   async findOne(id: number) {
-    return await this.companyRepository.findOne({where: {id}, relations:['categories','services', 'products', 'menuOptions']});
+    return await this.companyRepository.findOne({where: {id}, relations:['categories','services', 'products']});
   }
 
   async update(id: number, updateCompanyDto: UpdateCompanyDto) {

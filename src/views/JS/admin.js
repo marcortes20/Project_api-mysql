@@ -1,12 +1,12 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
   redirections();
   contact_window_bahavior();
   charge_page();
   addEventButtons();
   submitForsmEvents();
-  formsBehaviors();
-
-
+  formsBehaviors(); 
 });
 
 
@@ -37,18 +37,22 @@ function load_header(header_information) {
   paragraph.textContent = header_information.company_description;
   img_section_1.src = header_information.company_img_description;
 
-  header_information.menuOptions.forEach(option => {
-    // obtenemos cada uno de los enlaces del menú principal
-    document.getElementById(`menu_option_${option.id}`).textContent = option.name;
+  // header_information.menuOptions.forEach(option => {
+  //   // obtenemos cada uno de los enlaces del menú principal
+  //   document.getElementById(`menu_option_${option.id}`).textContent = option.name;
 
-  });
+  // });
 }
 
 function load_main(main_information) {
 
   currentIndex = 0;
   products = main_information.products;
-  updateProductInfo(0);
+
+  if (products.length != 0) {
+
+    updateProductInfo(0);
+  }
 
 
 
@@ -98,41 +102,70 @@ function updateProductInfo(index) {
   const size_product = document.getElementById('size_product');
 
 
-    img.src = product.image;
-    discount.textContent = product.discount;
-    description_product.textContent = product.description;
-    price_product.textContent = product.price;
-    size_product.textContent = product.size;
+  img.src = product.image;
+  discount.textContent = product.discount;
+  description_product.textContent = product.description;
+  price_product.textContent = product.price;
+  size_product.textContent = product.size;
 
-    editProductModal.style.opacity = 1;
+  editProductModal.style.opacity = 1;
 
 }
 
 //fetch to delete product by id then call reloadProducts
 function delete_product(id_product) {
-
   fetch(`http://localhost:3000/Project/api/products/${id_product}`, {
     method: 'DELETE',
-  }).then(reloadProducts());
-
+  }).then(() => {
+    // Llama a reloadProducts después de que la solicitud DELETE haya tenido éxito.
+    reloadProducts();
+  });
 }
+
+
 
 //clear producst array and reload it to show producst apdated after delete
 function reloadProducts() {
 
   //cleann array products 
   products = [];
+  
   currentIndex = 0;
   fetch('http://localhost:3000/Project/api/products')
     .then((response) => response.json())
     .then((db_products) => {
       products = db_products;
-      updateProductInfo(0);
+
+      if (products.length != 0) {
+
+        updateProductInfo(currentIndex);
+
+      }else{
+
+        clearProductsFields();
+      }
+
     });
 
 }
 
+function clearProductsFields(){
 
+  const img = document.getElementById('picture-content_two');
+  const discount = document.getElementById('content-discount');
+  const description_product = document.getElementById('description_product');
+  const price_product = document.getElementById('price_product');
+  const size_product = document.getElementById('size_product');
+
+
+  img.src = "";
+  discount.textContent = "";
+  description_product.textContent = "";
+  price_product.textContent = "";
+  size_product.textContent = "";
+
+
+}
 
 
 //Those are funtions to manage all Categories options.
@@ -547,39 +580,39 @@ function submitForsmEvents() {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
-    .then((response) => response.json())
-    .then((json) => {
-      addProductForm.reset();
-      addProductModal.style.display = "none";
-      content_product.style.opacity = 0;
-      setTimeout(() => {
-        
-        reloadProducts();
-        content_product.style.opacity = 1;
-      }, 520);
-    })
+      .then((response) => response.json())
+      .then((json) => {
+        addProductForm.reset();
+        addProductModal.style.display = "none";
+        content_product.style.opacity = 0;
+        setTimeout(() => {
+
+          reloadProducts();
+          content_product.style.opacity = 1;
+        }, 520);
+      })
 
   });
 
 
 
 
-    //EVENTS TO SUBMIT EDIT PRODUCT FORM
-    const editProductModal = document.getElementById("editProductModal");
-    const editProductForm = document.getElementById("editProductForm");
-  
-    editProductForm.addEventListener("submit", (event) => {
+  //EVENTS TO SUBMIT EDIT PRODUCT FORM
+  const editProductModal = document.getElementById("editProductModal");
+  const editProductForm = document.getElementById("editProductForm");
 
-      event.preventDefault();
+  editProductForm.addEventListener("submit", (event) => {
 
-      const newDescriptionProduct = document.getElementById("newDescriptionProduct");
-      const newImageProduct = document.getElementById("newImageProduct");
-      const newDiscountProduct = document.getElementById("newDiscountProduct");
-      const newPriceProduct = document.getElementById("newPriceProduct");
-      const newSizeProduct = document.getElementById("newSizeProduct");
-      
+    event.preventDefault();
 
-      fetch(`http://localhost:3000/Project/api/products/${products[currentIndex].id}`, {
+    const newDescriptionProduct = document.getElementById("newDescriptionProduct");
+    const newImageProduct = document.getElementById("newImageProduct");
+    const newDiscountProduct = document.getElementById("newDiscountProduct");
+    const newPriceProduct = document.getElementById("newPriceProduct");
+    const newSizeProduct = document.getElementById("newSizeProduct");
+
+
+    fetch(`http://localhost:3000/Project/api/products/${products[currentIndex].id}`, {
       method: 'PATCH',
       body: JSON.stringify({
 
@@ -599,13 +632,13 @@ function submitForsmEvents() {
         editProductModal.style.display = "none";
         content_product.style.opacity = 0;
         setTimeout(() => {
-          
+
           reloadProducts();
           content_product.style.opacity = 1;
         }, 520);
       })
-  
-    });
+
+  });
 
 
 
@@ -857,12 +890,14 @@ function addEventButtons() {
 
   const btnDeleteProduct = document.getElementById("btnDeleteProduct").addEventListener("click", () => {
 
-    const confirmDelete = confirm("Are you sure you want to delete this product? ");
+    if (products.length != 0) {
+      const confirmDelete = confirm("Are you sure you want to delete this product? ");
 
-    if(confirmDelete){
+      if (confirmDelete) {
 
-      delete_product(products[currentIndex].id);
+        delete_product(products[currentIndex].id);
 
+      }
     }
   });
 
@@ -870,64 +905,79 @@ function addEventButtons() {
 
   const btnEditProduct = document.getElementById("btnEditProduct").addEventListener("click", () => {
 
-    const editProductModal = document.getElementById("editProductModal");
+    if (products.length != 0) {
 
-    const img = document.getElementById('picture-content_two');
-    const discount = document.getElementById('content-discount');
-    const description_product = document.getElementById('description_product');
-    const price_product = document.getElementById('price_product');
-    const size_product = document.getElementById('size_product');
-    
-    const newDescriptionProduct = document.getElementById("newDescriptionProduct");
-    const newImageProduct = document.getElementById("newImageProduct");
-    const newDiscountProduct = document.getElementById("newDiscountProduct");
-    const newPriceProduct = document.getElementById("newPriceProduct");
-    const newSizeProduct = document.getElementById("newSizeProduct");
+      const editProductModal = document.getElementById("editProductModal");
 
-    newDescriptionProduct.value = description_product.textContent;
+      const img = document.getElementById('picture-content_two');
+      const discount = document.getElementById('content-discount');
+      const description_product = document.getElementById('description_product');
+      const price_product = document.getElementById('price_product');
+      const size_product = document.getElementById('size_product');
 
-    newImageProduct.value = img.src;
+      const newDescriptionProduct = document.getElementById("newDescriptionProduct");
+      const newImageProduct = document.getElementById("newImageProduct");
+      const newDiscountProduct = document.getElementById("newDiscountProduct");
+      const newPriceProduct = document.getElementById("newPriceProduct");
+      const newSizeProduct = document.getElementById("newSizeProduct");
 
-    newDiscountProduct.value = discount.textContent;
-    
-    newPriceProduct.value = price_product.textContent;
-    
-    newSizeProduct.value = size_product.textContent;
+      newDescriptionProduct.value = description_product.textContent;
 
-    editProductModal.style.display = "block";
+      newImageProduct.value = img.src;
+
+      newDiscountProduct.value = discount.textContent;
+
+      newPriceProduct.value = price_product.textContent;
+
+      newSizeProduct.value = size_product.textContent;
+
+      editProductModal.style.display = "block";
+
+    }
+
   });
 
 
 
   document.getElementById("righttButton").addEventListener("click", function () {
-    currentIndex = (currentIndex + 1) % products.length;
 
-    const content_product = document.getElementById("content-product")
+    if (products.length != 0) {
 
-    content_product.style.opacity = 0;
+      currentIndex = (currentIndex + 1) % products.length;
 
-    setTimeout(() => {
-      updateProductInfo(currentIndex);
-      content_product.style.opacity = 1;
-      updateProductInfo(currentIndex);
+      const content_product = document.getElementById("content-product")
 
-    }, 500);
+      content_product.style.opacity = 0;
+
+      setTimeout(() => {
+        updateProductInfo(currentIndex);
+        content_product.style.opacity = 1;
+        updateProductInfo(currentIndex);
+
+      }, 500);
+
+    }
 
   });
 
   // Función para manejar el clic en el botón izquierdo
   document.getElementById("leftButton").addEventListener("click", function () {
-    currentIndex = (currentIndex - 1 + products.length) % products.length;
-    const content_product = document.getElementById("content-product")
 
-    content_product.style.opacity = 0;
+    if (products.length != 0) {
 
-    setTimeout(() => {
-      updateProductInfo(currentIndex);
-      content_product.style.opacity = 1;
-      updateProductInfo(currentIndex);
+      currentIndex = (currentIndex - 1 + products.length) % products.length;
+      const content_product = document.getElementById("content-product")
 
-    }, 500);
+      content_product.style.opacity = 0;
+
+      setTimeout(() => {
+        updateProductInfo(currentIndex);
+        content_product.style.opacity = 1;
+        updateProductInfo(currentIndex);
+
+      }, 500);
+
+    }
 
   });
 
@@ -937,7 +987,7 @@ function addEventButtons() {
 
     addServiceModal.style.display = "block";
   });
-  
+
   const btnAddProduct = document.getElementById("btnAddProduct").addEventListener("click", () => {
     const addProductModal = document.getElementById("addProductModal");
     addProductModal.style.display = "block";
@@ -1014,10 +1064,10 @@ function contact_window_bahavior() {
 
 function redirections() {
   //desplazamiento a el apartado de inicio
-  document.querySelector('a[href="#start"').addEventListener('click', function (e) {
+  document.querySelector('a[href="#companyInformation"').addEventListener('click', function (e) {
     e.preventDefault(); // Previene el comportamiento de enlace predeterminado
 
-    const destino = document.getElementById('start');
+    const destino = document.getElementById('companyInformation');
 
     destino.scrollIntoView({
       behavior: 'smooth',

@@ -248,6 +248,7 @@ body {
   display: flex;
   flex-direction: row;
   text-align: start;
+  justify-content: space-evenly;
 
 }
 /*Imagen sección de servicios*/
