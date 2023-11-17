@@ -1,5 +1,4 @@
 import { Category } from "src/categories/entities/category.entity";
-import { MenuOption } from "src/menu-options/entities/menu-option.entity";
 import { Product } from "src/products/entities/product.entity";
 import { Service } from "src/services/entities/service.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -30,7 +29,4 @@ export class Company {
   @OneToMany(() => Category , categories => categories.company)
   categories : Category[];
 
-  @OneToMany(() => MenuOption , menuOptions => menuOptions.company)
-  menuOptions : MenuOption[];
-  
 }
